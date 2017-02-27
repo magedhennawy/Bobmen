@@ -1,4 +1,4 @@
-# Bobmen: the project
+# Bobmen: Bobboard
 
 ## Team Members
 - **Paul Bursu**
