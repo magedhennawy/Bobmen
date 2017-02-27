@@ -34,6 +34,8 @@ This app will provide users with the office necessities that would usually requi
         - Can add/remove items in "to do list" <i>fashion</i>
     - Password Saver:
         - saves username/passwords for frequently visited websites in a secure way
+    - Search:
+        - Searches the web with your favorite browser
 - Accounts:
     - Sign up
     - Sign in
@@ -45,17 +47,13 @@ This app will provide users with the office necessities that would usually requi
 
 ## Additional features that will be complete by the Final version
 
-Extra features 
-User accounts: 
-    - Users can save the widgets that they would like to have shown, so every time they access the dashboard, it is the same way they left it
-    - User location saved for weather
-    - Password saver hashed and saved in case they require their passwords
-    - User reminders saved
-    - emails still active
-    - sends notification when a reminder is up
-- Emails: 
-    - Shows recent emails
-    - Redirects to email provider when actions are needed to be taken
+- Widetes:
+    - Calendar:
+        - View your calendar at a glance
+    - Emails:
+        - View recent emails for an e-mail account
+    - Reminders:
+        - Set future notifications/reminders
 
 
 ## Technology we will use
@@ -73,3 +71,6 @@ N(node.js): Backend technology
 
 
 ## Technical challenges
+
+- Implementing all of the widgets and features listed in such a way that it would be relatively easy to add a new widget and feature.
+- Using unexplored (by us) technologies, APIs, and modules to provide a wide range of distinct features.
