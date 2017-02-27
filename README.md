@@ -24,13 +24,21 @@ This app will provide users with the office necessities that would usually requi
 
 ## Key features that will be completed by the Beta version
 
-User accounts: 
-    - Users can save the widgets that they would like to have shown, so every time they access the dashboard, it is the same way they left it
-    - User location saved for weather
-    - Password saver hashed and saved in case they require their passwords
-    - User reminders saved
-    - emails still active
-    - sends notification when a reminder is up
+- Widgets:
+    - Modular implementation of widgets
+    - User preferences saved for each widget.
+    - Widgets are re-orderable 
+    - Weather: 
+        - User location and preferences are saved
+    - To Do list :
+        - Can add/remove items in "to do list" <i>fashion</i>
+    - Password Saver:
+        - saves username/passwords for frequently visited websites in a secure way
+- Accounts:
+    - Sign up
+    - Sign in
+    - Sign out
+        
 
 
 
@@ -38,6 +46,16 @@ User accounts:
 ## Additional features that will be complete by the Final version
 
 Extra features 
+User accounts: 
+    - Users can save the widgets that they would like to have shown, so every time they access the dashboard, it is the same way they left it
+    - User location saved for weather
+    - Password saver hashed and saved in case they require their passwords
+    - User reminders saved
+    - emails still active
+    - sends notification when a reminder is up
+- Emails: 
+    - Shows recent emails
+    - Redirects to email provider when actions are needed to be taken
 
 
 ## Technology we will use
