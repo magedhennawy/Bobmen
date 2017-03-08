@@ -21,7 +21,7 @@ This app will provide users with the office necessities that would usually requi
     - Modular implementation of widgets
     - User preferences saved for each widget.
     - Widgets are re-orderable
-    - Weather: 
+    - Weather:
         - User location and preferences are saved
     - To Do list :
         - Can add/remove items in "to do list" <i>fashion</i>
@@ -63,3 +63,7 @@ N(node.js): Backend technology
 
 - Implementing all of the widgets and features listed in such a way that it would be relatively easy to add a new widget and feature.
 - Using unexplored (by us) technologies, APIs, and modules to provide a wide range of distinct features.
+
+Frontend new technologies
+ - Gulp
+ - Bower
