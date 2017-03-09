@@ -1,0 +1,24 @@
+{
+  "name": "bobboard",
+  "version": "1.0.0",
+  "description": "## Team Members - **Paul Bursu** - **Brandon Bowen** - **Maged Hennawy**",
+  "main": "index.js",
+  "dependencies": {
+    "angular2-boilerplate": "^2.2.0",
+    "jumanjijs": "^2.3.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UTSCC09/Bobmen.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UTSCC09/Bobmen/issues"
+  },
+  "homepage": "https://github.com/UTSCC09/Bobmen#readme"
+}
