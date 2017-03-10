@@ -4,18 +4,15 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var router = require('./router')
 
 mongoose.Promise = global.Promise;
 var myDB = 'mongodb://admin:admin@ds127300.mlab.com:27300/users';
 mongoose.connect(myDB);
 
 // Get our API routes
-const api = require('./server/routes/api');
 
 const app = express();
-
-var User = require('./server/models/user');
-
 
 // Parsers for POST data
 app.use(bodyParser.json());
@@ -25,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Set our api routes
-app.use('/api', api);
+app.use('/api', router);
 
 // Catch all other routes and return the index file
 app.get('*', function(req, res) {
