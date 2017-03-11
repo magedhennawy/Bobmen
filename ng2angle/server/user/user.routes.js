@@ -10,3 +10,6 @@ router.post('/user',user.createUser);
 router.use('/', user.authMiddleware);
 router.get('/user', user.getUser);
 
+
+module.exports = router;
+
