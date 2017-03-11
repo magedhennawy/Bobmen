@@ -10,7 +10,45 @@ const headingMain = {
     heading: true
 };
 
+const Pages = {
+  text: 'Pages',
+  link: '/pages',
+  icon: 'icon-doc',
+  submenu: [
+    {
+      text: 'Login',
+      link: '/login'
+    },
+    {
+      text: 'Register',
+      link: '/register'
+    },
+    {
+      text: 'Recover',
+      link: '/recover'
+    },
+    {
+      text: 'Lock',
+      link: '/lock'
+    },
+    {
+      text: '404',
+      link: '/404'
+    },
+    {
+      text: '500',
+      link: '/500'
+    },
+    {
+      text: 'Maintenance',
+      link: '/maintenance'
+    }
+  ]
+};
+
 export const menu = [
     headingMain,
-    Home
+    Home,
+    Pages
 ];
+
