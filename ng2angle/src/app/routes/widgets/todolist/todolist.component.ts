@@ -46,6 +46,7 @@ export class TodolistComponent implements OnInit {
             this.todo.title = '';
             this.todo.description = '';
         }
+        console.log(this.todo);
     };
 
     editTodo(index, $event) {

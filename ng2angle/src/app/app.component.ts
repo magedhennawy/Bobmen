@@ -2,11 +2,13 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 declare var $: any;
 
 import { SettingsService } from './core/settings/settings.service';
+import { HTTP_PROVIDERS } from '@angular/http';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    styleUrls: ['./app.component.scss'],
+    providers: [HTTP_PROVIDERS]
 })
 export class AppComponent implements OnInit {
 
