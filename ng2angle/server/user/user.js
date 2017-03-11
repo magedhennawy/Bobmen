@@ -30,7 +30,7 @@ function getUser(req, res, next){
 }
 
 function authMiddleware(req, res, next){
-  User.findOne({username: req.body.username}, function(err, data){
+  User.findOne({username: req.header.username}, function(err, data){
     if (err)
       res.status(500).json(err);
     else{
