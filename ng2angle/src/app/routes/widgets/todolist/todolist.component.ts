@@ -9,7 +9,7 @@ declare var $: any;
 export class TodolistComponent implements OnInit {
 
     items = [
-        {
+/*        {
             todo: { title: 'Meeting with Mark at 7am.', description: 'Pellentesque convallis mauris eu elit imperdiet quis eleifend quam aliquet. ' },
             complete: true
         },
@@ -20,7 +20,7 @@ export class TodolistComponent implements OnInit {
         {
             todo: { title: 'Find a new place for vacations', description: '' },
             complete: false
-        }
+        }*/
     ];
 
     editingTodo = false;

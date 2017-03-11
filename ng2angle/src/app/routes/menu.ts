@@ -55,10 +55,6 @@ const Widgets = {
         text: 'To do list',
         link: '/widgets/todolist'
       },
-      {
-        text: 'Calendar',
-        link: '/widgets/calendar'
-      }
   ]
 };
 
