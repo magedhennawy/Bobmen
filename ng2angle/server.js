@@ -4,7 +4,7 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var router = require('./router')
+var router = require('./router');
 
 mongoose.Promise = global.Promise;
 var myDB = 'mongodb://admin:admin@ds127300.mlab.com:27300/users';

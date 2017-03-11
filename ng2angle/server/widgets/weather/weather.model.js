@@ -2,9 +2,7 @@ var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
 var weatherSchema   = new Schema({
-
-
-  userid: Schema.types.ObjectId,
+  userid: Schema.Types.ObjectId,
   celsius: {
     type: Boolean,
     default: true
