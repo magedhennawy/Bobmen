@@ -15,7 +15,8 @@ export const routes = [
     component: LayoutComponent,
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', loadChildren: './home/home.module#HomeModule' }
+      { path: 'home', loadChildren: './home/home.module#HomeModule' },
+      { path: 'widgets', loadChildren: './widgets/widgets.module#WidgetsModule' },
     ]
   },
 
@@ -27,6 +28,7 @@ export const routes = [
   { path: 'maintenance', component: MaintenanceComponent },
   { path: '404', component: Error404Component },
   { path: '500', component: Error500Component },
+
 
   // Not found
   { path: '**', redirectTo: 'home' }

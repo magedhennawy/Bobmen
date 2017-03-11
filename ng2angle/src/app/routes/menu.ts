@@ -46,9 +46,26 @@ const Pages = {
   ]
 };
 
+const Widgets = {
+  text: 'Widgets',
+  link: '/widgets',
+  icon: 'icon-grid',
+  submenu: [
+      {
+        text: 'To do list',
+        link: '/widgets/todolist'
+      },
+      {
+        text: 'Calendar',
+        link: '/widgets/calendar'
+      }
+  ]
+};
+
 export const menu = [
     headingMain,
     Home,
-    Pages
+    Pages,
+    Widgets
 ];
 
