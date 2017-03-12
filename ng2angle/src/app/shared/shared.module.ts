@@ -25,6 +25,8 @@ import { FlotDirective } from './directives/flot/flot.directive';
 import { SparklineDirective } from './directives/sparkline/sparkline.directive';
 import { EasypiechartDirective } from './directives/easypiechart/easypiechart.directive';
 import { ColorsService } from './colors/colors.service';
+import { AuthService } from './services/auth.service';
+import { ToDoListService} from './services/todolist.service';
 import { CheckallDirective } from './directives/checkall/checkall.directive';
 import { VectormapDirective } from './directives/vectormap/vectormap.directive';
 import { NowDirective } from './directives/now/now.directive';
@@ -56,7 +58,9 @@ import { JqcloudDirective } from './directives/jqcloud/jqcloud.directive';
         ToasterModule
     ],
     providers: [
-        ColorsService
+        ColorsService,
+        AuthService,
+        ToDoListService
     ],
     declarations: [
         FlotDirective,

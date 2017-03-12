@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { authService } from '../../../shared/services/auth.service';
+import { AuthService } from '../../../shared/services/auth.service';
 
 
 
@@ -10,10 +10,18 @@ import { authService } from '../../../shared/services/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-    constructor(private authService: authService) { }
+    constructor(private AuthService: AuthService) {
 
-    ngOnInit() {
-      this.authService.signIn();
     }
+
+    ngOnInit(){
+      this.AuthService.signIn()
+        .subscribe(
+          username => console.log(username),
+          error => console.error('Error ' + error),
+          () => console.log('Completed!')
+        )
+    }
+
 
 }
