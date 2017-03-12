@@ -10,4 +10,4 @@ var todolistSchema   = new Schema(
   {versionKey: false}
 );
 
-module.exports = mongoose.model('ToDoList', todolistSchema);
+module.exports = mongoose.model('ToDoList', todolistSchema, "toDoList");

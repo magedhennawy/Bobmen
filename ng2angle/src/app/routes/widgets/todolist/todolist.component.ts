@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToDoListService } from '../../../shared/services/todolist.service';
+import {createScope} from "@angular/core/src/profile/wtf_impl";
 
 declare var $: any;
 
@@ -35,12 +36,13 @@ export class TodolistComponent implements OnInit {
     //constructor() { }
 
     ngOnInit() {
-      this.ToDoListService.getAllPosts().subscribe(function(data){
-        console.log(data)
-      });
+      this.ToDoListService.getAllPosts().subscribe(data =>{
+        this.items = data;
+      })
     }
 
     addTodo() {
+      console.log(this.items);
 
         if (this.todo.title === '') return;
         if (!this.todo.description) this.todo.description = '';
@@ -50,9 +52,12 @@ export class TodolistComponent implements OnInit {
             this.editingTodo = false;
         }
         else {
-            this.items.push({ todo: $.extend({}, this.todo), complete: false });
+          this.ToDoListService.addItem(this.todo).subscribe(data => {
+            console.log(data);
+            this.items.push({todo: $.extend({}, this.todo), complete: false});
             this.todo.title = '';
             this.todo.description = '';
+          })
         }
     };
 

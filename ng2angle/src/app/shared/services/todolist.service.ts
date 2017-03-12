@@ -12,6 +12,12 @@ export class ToDoListService {
     return this.http.get('/api/todolist')
       .map((res:Response) => res.json());
   }
+
+  addItem(item) {
+    console.log(item);
+    return this.http.post('/api/todolist',item)
+      .map((res:Response) => res.json());
+  }
 }
 /********
 
