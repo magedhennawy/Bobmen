@@ -20,18 +20,17 @@ function createUser(req, res ,next){
 
 
 function addItem(req,res,next){
-  res.send("WORKS");
+  res.send({"task":"COOL"});
 }
 
 function getToDoList(req, res, next){
-/*  ToDoList.find(function(err, data) {
+  ToDoList.find(function(err, data) {
     if (err)
       res.send(err);
     else{
       res.json(data);
     }
-  });*/
-  res.send("WORKS");
+  });
 }
 
 /*function authMiddleware(req, res, next){
