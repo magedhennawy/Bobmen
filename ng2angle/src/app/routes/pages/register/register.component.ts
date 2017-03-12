@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SettingsService } from '../../../core/settings/settings.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
+import { AuthService } from '../../../shared/services/auth.service';
 
 @Component({
     selector: 'app-register',
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
     valForm: FormGroup;
     passwordForm: FormGroup;
 
-    constructor(public settings: SettingsService, fb: FormBuilder) {
+    constructor(public settings: SettingsService, fb: FormBuilder, private AuthService: AuthService) {
         this.passwordForm = fb.group({
             'password': [null, Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9]{6,10}$')])],
             'confirmPassword': [null, Validators.required]
@@ -38,6 +39,11 @@ export class RegisterComponent implements OnInit {
         if (this.valForm.valid) {
             console.log('Valid!');
             console.log(value);
+          this.AuthService.signUp(value.email, value.passwordGroup.password).subscribe(
+            username => this.AuthService.processSignUp(),
+            error => console.error('Error ' + error),
+            () => console.log('Completed!')
+          )
         }
     }
 

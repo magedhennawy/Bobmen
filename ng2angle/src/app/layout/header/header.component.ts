@@ -1,11 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 const screenfull = require('screenfull');
 const browser = require('jquery.browser');
+
 declare var $: any;
 
 import { UserblockService } from '../sidebar/userblock/userblock.service';
 import { SettingsService } from '../../core/settings/settings.service';
 import { MenuService } from '../../core/menu/menu.service';
+import { AuthService } from '../../shared/services/auth.service';
+
 
 @Component({
     selector: 'app-header',
@@ -20,7 +23,7 @@ export class HeaderComponent implements OnInit {
     isNavSearchVisible: boolean;
     @ViewChild('fsbutton') fsbutton;  // the fullscreen button
 
-    constructor(private menu: MenuService, private userblockService: UserblockService, private settings: SettingsService) {
+    constructor(private menu: MenuService, private userblockService: UserblockService, private settings: SettingsService, private AuthService:AuthService) {
 
         // show only a few items on demo
         this.menuItems = menu.getMenu().slice(0,4); // for horizontal layout
@@ -64,6 +67,14 @@ export class HeaderComponent implements OnInit {
 
     isCollapsedText() {
         return this.settings.layout.isCollapsedText;
+    }
+
+    signOut(){
+      this.AuthService.signOut().subscribe(
+        username => this.AuthService.processSignOut(),
+        error => console.error('Error ' + error),
+        () => console.log('Completed!')
+      )
     }
 
     toggleFullScreen(event) {

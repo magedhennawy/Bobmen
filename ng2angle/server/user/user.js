@@ -25,7 +25,7 @@ function createUser(req, res ,next){
       if (user) return res.status(409).end("Username " + req.body.username + " already exists");
       data.save(function (err, user) {
         if (err) return res.status(500).end(err);
-        return res.json(user);
+        return res.json({username: user.username});
       });
     });
 
@@ -51,7 +51,8 @@ function authMiddleware(req, res, next){
 function signOut(req,res,next){
   req.session.destroy(function(err) {
     if (err) return res.status(500).end(err);
-    return res.end();
+    res.clearCookie("username");
+    return res.json({message: "signed out"});
   });
 }
 

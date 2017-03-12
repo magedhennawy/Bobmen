@@ -17,15 +17,32 @@ export class AuthService{
   }
 
   setUser(username){
-    this.user = username;
     this.router.navigate(['/home']);
 
   }
 
   isLoggedIn(){
-    if(this.user || Cookie.get('username')) return true;
+    if(Cookie.get('username')) return true;
     return false
 
+  }
+
+  signOut(){
+    return this.http.get('/api/user/signout')
+      .map(response => response.json());
+  }
+
+  processSignOut(){
+    this.router.navigate(['/login']);
+  }
+
+  signUp(username, password){
+    return this.http.put('/api/user',{username: username,password: password})
+      .map(response => response.json());
+  }
+
+  processSignUp(){
+    this.router.navigate(['/login']);
   }
 
   constructor(private http: Http, private router : Router) {
