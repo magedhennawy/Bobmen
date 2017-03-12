@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ToDoListService } from '../todolist.service';
+
 declare var $: any;
 
 @Component({
@@ -27,9 +29,15 @@ export class TodolistComponent implements OnInit {
     todo: any = {};
 
 
-    constructor() { }
+    constructor(private ToDoListService: ToDoListService) { }
+
+
+    //constructor() { }
 
     ngOnInit() {
+      this.ToDoListService.getAllPosts().subscribe(function(data){
+        console.log(data)
+      });
     }
 
     addTodo() {
@@ -46,7 +54,6 @@ export class TodolistComponent implements OnInit {
             this.todo.title = '';
             this.todo.description = '';
         }
-        console.log(this.todo);
     };
 
     editTodo(index, $event) {
