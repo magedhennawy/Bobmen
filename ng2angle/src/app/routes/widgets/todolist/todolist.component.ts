@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToDoListService } from '../todolist.service';
+import { ToDoListService } from '../../../shared/services/todolist.service';
 
 declare var $: any;
 
