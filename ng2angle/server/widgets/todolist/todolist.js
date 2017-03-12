@@ -18,24 +18,73 @@ function createUser(req, res ,next){
 
 }*/
 
+/*  {userid: Schema.Types.ObjectId,
+ toDoList: [{
+ title:String,
+ description:String,
+ complete:Boolean
+ }]
+ },
+ {versionKey: false}
+ );*/
+
 
 function addItem(req,res,next){
-  console.log(req.body);
-  var data = new ToDoList({todo:{title:req.body.title, description:req.body.description}, complete: false});
-  ToDoList.create(data, function (err, data) {
+  var item = new ToDoList({userid:req.session.user._id, toDoList:[{todo:{title:req.body.title, description:req.body.description}, complete: false}]});
+  ToDoList.find({userid:req.session.user._id},  function (err, data) {
+      if (err)
+          res.send(err);
+      else{
+          if(data.length > 0 ){
+              ToDoList.update({userid:req.session.user._id},{$push:{toDoList: {todo:{title:req.body.title, description:req.body.description}, complete: false} }}, function (err, data) {
+                  if (err)
+                      res.send(err);
+                  else{
+                      res.json(data);
+                  }
+              });
+          }else{
+              ToDoList.create(item, function (err, data) {
+                  if (err)
+                      res.send(err);
+                  else{
+                    res.json(data);
+                  }
+              });
+          }
+      }
+  });
+}
+
+function editItem(req,res,next){
+  var item = new ToDoList({userid:req.session.user._id, toDoList:[{todo:{title:req.body.title, description:req.body.description}, complete: false}]});
+  ToDoList.find({userid:req.session.user._id},  function (err, data) {
     if (err)
       res.send(err);
     else{
-      res.json(data);
+      if(data.length > 0 ){
+        ToDoList.update({userid:req.session.user._id},{$push:{toDoList: {todo:{title:req.body.title, description:req.body.description}, complete: false} }}, function (err, data) {
+          if (err)
+            res.send(err);
+          else{
+            res.json(data);
+          }
+        });
+      }else{
+        ToDoList.create(item, function (err, data) {
+          if (err)
+            res.send(err);
+          else{
+            res.json(data);
+          }
+        });
+      }
     }
   });
-
-  //console.log(req.body);
-  /*res.send({"username":req.session.user});*/
 }
 
 function getToDoList(req, res, next){
-  ToDoList.find(function(err, data) {
+  ToDoList.find({userid: req.session.user._id},function(err, data) {
     if (err)
       res.send(err);
     else{
@@ -61,7 +110,8 @@ function getToDoList(req, res, next){
 
 module.exports = {
   getToDoList: getToDoList,
-  addItem: addItem
+  addItem: addItem,
+  editItem: editItem
 /*
   createUser: createUser,
 */
