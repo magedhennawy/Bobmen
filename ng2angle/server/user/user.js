@@ -43,7 +43,7 @@ function getUser(req, res, next){
 }
 
 function authMiddleware(req, res, next){
-
+  console.log(req.originalUrl);
   if (!req.session.user) return res.status(403).end("Forbidden");
   return next()
 }
@@ -68,10 +68,11 @@ function signIn(req,res,next){
 }
 
 
+
 module.exports = {
   getUser: getUser,
   createUser: createUser,
   authMiddleware: authMiddleware,
   signIn: signIn,
-  signOut: signOut
+  signOut: signOut,
 };

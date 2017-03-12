@@ -7,12 +7,14 @@ import { LockComponent } from './pages/lock/lock.component';
 import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { Error500Component } from './pages/error500/error500.component';
+import { AuthGuard } from '../shared/services/authguard.service';
 
 export const routes = [
 
   {
     path: '',
     component: LayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', loadChildren: './home/home.module#HomeModule' },
@@ -31,6 +33,6 @@ export const routes = [
 
 
   // Not found
-  { path: '**', redirectTo: 'home' }
+  { path: '**', redirectTo: 'login' }
 
 ];

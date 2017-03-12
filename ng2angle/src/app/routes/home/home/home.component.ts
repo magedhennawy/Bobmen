@@ -15,12 +15,12 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit(){
-      this.AuthService.signIn()
+      /*this.AuthService.signIn()
         .subscribe(
           username => console.log(username),
           error => console.error('Error ' + error),
           () => console.log('Completed!')
-        )
+        )*/
     }
 
 
