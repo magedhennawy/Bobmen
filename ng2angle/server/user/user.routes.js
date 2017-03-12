@@ -5,13 +5,13 @@
 var express = require('express');
 var router = express.Router();
 var user = require('./user');
+const path = require('path');
 
 
 
-router.put('/user',user.createUser);
+router.put('//user',user.createUser);
 
 router.post('/user/signin', user.signIn);
-
 router.use('*', user.authMiddleware);
 router.get('/user/signout', user.signOut);
 router.get('/user', user.getUser);
