@@ -28,6 +28,7 @@ export class TodolistComponent implements OnInit {
 
     editingTodo = false;
     todo: any = {};
+    current = {};
 
 
     constructor(private ToDoListService: ToDoListService) { }
@@ -50,6 +51,11 @@ export class TodolistComponent implements OnInit {
         if (!this.todo.description) this.todo.description = '';
 
         if (this.editingTodo) {
+            var current = {index: this.current, item:this.todo};
+            this.ToDoListService.editItem(current).subscribe(data =>{
+                console.log(data);
+            });
+
             this.todo = {};
             this.editingTodo = false;
         }
@@ -64,10 +70,10 @@ export class TodolistComponent implements OnInit {
     };
 
     editTodo(index, $event) {
+        this.current = index;
         $event.preventDefault();
         $event.stopPropagation();
         this.todo = this.items[index].todo;
-        console.log(index);
         this.editingTodo = true;
     };
 

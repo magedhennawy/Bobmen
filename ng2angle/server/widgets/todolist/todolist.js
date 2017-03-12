@@ -58,28 +58,21 @@ function addItem(req,res,next){
 
 function editItem(req,res,next){
   var item = new ToDoList({userid:req.session.user._id, toDoList:[{todo:{title:req.body.title, description:req.body.description}, complete: false}]});
-  ToDoList.find({userid:req.session.user._id},  function (err, data) {
-    if (err)
-      res.send(err);
-    else{
-      if(data.length > 0 ){
-        ToDoList.update({userid:req.session.user._id},{$push:{toDoList: {todo:{title:req.body.title, description:req.body.description}, complete: false} }}, function (err, data) {
-          if (err)
+  ToDoList.findOne({userid:req.session.user._id},  function (err, data) {
+      if (err)
             res.send(err);
-          else{
-            res.json(data);
-          }
-        });
-      }else{
-        ToDoList.create(item, function (err, data) {
-          if (err)
-            res.send(err);
-          else{
-            res.json(data);
-          }
-        });
+      else{
+          data.toDoList[req.body.index].todo.title = req.body.item.title;
+          data.toDoList[req.body.index].todo.description = req.body.item.description;
+
+          ToDoList.update({userid:req.session.user._id},{$set:{toDoList:data.toDoList}},function (err, data) {
+              if (err)
+                  res.send(err);
+              else{
+                  res.json(data);
+              }
+          });
       }
-    }
   });
 }
 
@@ -93,27 +86,8 @@ function getToDoList(req, res, next){
   });
 }
 
-/*function authMiddleware(req, res, next){
-  User.findOne({username: req.header.username}, function(err, data){
-    if (err){
-      console.log(err)
-      res.status(500).json(err);
-    }
-
-
-    else{
-      req.userId = data._id;
-      next();
-    }
-  })
-}*/
-
 module.exports = {
   getToDoList: getToDoList,
   addItem: addItem,
   editItem: editItem
-/*
-  createUser: createUser,
-*/
-/*  authMiddleware: authMiddleware*/
 };

@@ -16,6 +16,8 @@ router.get('/todolist', todolist.getToDoList);
 
 router.post('/todolist', todolist.addItem);
 
+router.patch('/todolist', todolist.editItem);
+
 
 module.exports = router;
 

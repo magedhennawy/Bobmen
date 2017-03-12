@@ -18,6 +18,16 @@ export class ToDoListService {
     return this.http.post('/api/todolist',item)
       .map((res:Response) => res.json());
   }
+
+  getIndex(index){
+
+  }
+
+  editItem(item) {
+    console.log(item);
+    return this.http.patch('/api/todolist',item)
+      .map((res:Response) => res.json());
+  }
 }
 /********
 
