@@ -4,10 +4,20 @@
 var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
+
 var todolistSchema   = new Schema(
-  {todo: {title: String, description: String},
-  complete: Boolean},
+  {userid: Schema.Types.ObjectId,
+  toDoList: {type:Array, default:[]}
+    /*{
+    todo:{
+      title:String,
+      description:String
+    },
+    complete:Boolean
+  }*/
+  },
   {versionKey: false}
 );
+
 
 module.exports = mongoose.model('ToDoList', todolistSchema, "toDoList");

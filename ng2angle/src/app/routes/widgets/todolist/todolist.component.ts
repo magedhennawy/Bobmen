@@ -37,13 +37,15 @@ export class TodolistComponent implements OnInit {
 
     ngOnInit() {
       this.ToDoListService.getAllPosts().subscribe(data =>{
-        this.items = data;
+        if(data.length > 0){
+          this.items = data[0].toDoList;
+        }else{
+          this.items = [];
+        }
       })
     }
 
     addTodo() {
-      console.log(this.items);
-
         if (this.todo.title === '') return;
         if (!this.todo.description) this.todo.description = '';
 
@@ -52,12 +54,12 @@ export class TodolistComponent implements OnInit {
             this.editingTodo = false;
         }
         else {
-          this.ToDoListService.addItem(this.todo).subscribe(data => {
-            console.log(data);
-            this.items.push({todo: $.extend({}, this.todo), complete: false});
-            this.todo.title = '';
-            this.todo.description = '';
-          })
+            this.ToDoListService.addItem(this.todo).subscribe(data => {
+                console.log(data);
+                this.items.push({todo: $.extend({}, this.todo), complete: false});
+                this.todo.title = '';
+                this.todo.description = '';
+            })
         }
     };
 
@@ -65,6 +67,7 @@ export class TodolistComponent implements OnInit {
         $event.preventDefault();
         $event.stopPropagation();
         this.todo = this.items[index].todo;
+        console.log(index);
         this.editingTodo = true;
     };
 
