@@ -48,7 +48,7 @@ function authMiddleware(req, res, next){
     res.clearCookie("username");
     return res.status(403).end("Forbidden");
   }
-  }
+
   return next()
 }
 
