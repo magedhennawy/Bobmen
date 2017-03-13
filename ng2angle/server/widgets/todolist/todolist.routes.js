@@ -18,6 +18,8 @@ router.post('/todolist', todolist.addItem);
 
 router.patch('/todolist', todolist.editItem);
 
+router.delete('/todolist/:index', todolist.deleteItem);
+
 
 module.exports = router;
 

@@ -49,19 +49,14 @@ export class TodolistComponent implements OnInit {
     addTodo() {
         if (this.todo.title === '') return;
         if (!this.todo.description) this.todo.description = '';
-
         if (this.editingTodo) {
             var current = {index: this.current, item:this.todo};
-            this.ToDoListService.editItem(current).subscribe(data =>{
-                console.log(data);
-            });
-
+            this.ToDoListService.editItem(current);
             this.todo = {};
             this.editingTodo = false;
         }
         else {
             this.ToDoListService.addItem(this.todo).subscribe(data => {
-                console.log(data);
                 this.items.push({todo: $.extend({}, this.todo), complete: false});
                 this.todo.title = '';
                 this.todo.description = '';
@@ -78,7 +73,12 @@ export class TodolistComponent implements OnInit {
     };
 
     removeTodo(index/*, $event*/) {
+          this.ToDoListService.deleteItem(index).subscribe(data =>{
+          console.log(data);
+        });
         this.items.splice(index, 1);
+
+
     };
 
     clearAll() {

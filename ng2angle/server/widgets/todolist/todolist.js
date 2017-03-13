@@ -57,7 +57,6 @@ function addItem(req,res,next){
 }
 
 function editItem(req,res,next){
-  var item = new ToDoList({userid:req.session.user._id, toDoList:[{todo:{title:req.body.title, description:req.body.description}, complete: false}]});
   ToDoList.findOne({userid:req.session.user._id},  function (err, data) {
       if (err)
             res.send(err);
@@ -76,6 +75,42 @@ function editItem(req,res,next){
   });
 }
 
+function deleteItem(req,res,next){
+
+    ToDoList.findOne({userid:req.session.user._id},  function (err, data) {
+        if (err)
+            res.send(err);
+        else {
+            data.toDoList.splice(req.params.index, 1);
+            ToDoList.update({userid:req.session.user._id},{$set:{toDoList:data.toDoList}},function (err, data) {
+            if (err)
+              res.send(err);
+            else{
+              res.json(data);
+            }
+          });
+        }
+    });
+
+/*  var item = new ToDoList({userid:req.session.user._id, toDoList:[{todo:{title:req.body.title, description:req.body.description}, complete: false}]});
+  ToDoList.findOne({userid:req.session.user._id},  function (err, data) {
+      if (err)
+            res.send(err);
+      else{
+          data.toDoList[req.body.index].todo.title = req.body.item.title;
+          data.toDoList[req.body.index].todo.description = req.body.item.description;
+
+          ToDoList.update({userid:req.session.user._id},{$set:{toDoList:data.toDoList}},function (err, data) {
+              if (err)
+                  res.send(err);
+              else{
+                  res.json(data);
+              }
+          });
+      }
+  });*/
+}
+
 function getToDoList(req, res, next){
   ToDoList.find({userid: req.session.user._id},function(err, data) {
     if (err)
@@ -89,5 +124,6 @@ function getToDoList(req, res, next){
 module.exports = {
   getToDoList: getToDoList,
   addItem: addItem,
-  editItem: editItem
+  editItem: editItem,
+  deleteItem: deleteItem
 };

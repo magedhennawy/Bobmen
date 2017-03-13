@@ -14,18 +14,17 @@ export class ToDoListService {
   }
 
   addItem(item) {
-    console.log(item);
     return this.http.post('/api/todolist',item)
       .map((res:Response) => res.json());
   }
 
-  getIndex(index){
-
+  editItem(item) {
+    return this.http.patch('/api/todolist',item)
+      .map((res:Response) => res.json());
   }
 
-  editItem(item) {
-    console.log(item);
-    return this.http.patch('/api/todolist',item)
+  deleteItem(index) {
+    return this.http.delete('/api/todolist/'+index)
       .map((res:Response) => res.json());
   }
 }

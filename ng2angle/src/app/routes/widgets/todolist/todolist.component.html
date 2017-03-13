@@ -21,7 +21,7 @@
         <accordion [closeOthers]="true">
             <accordion-group panelClass="todo-item" *ngFor="let item of items; let i = index" [isDisabled]="item.complete">
                 <div accordion-heading [ngClass]="{'todo-complete': item.complete}">
-                    <span class="close" (click)="removeTodo($index, $event)">×</span>
+                    <span class="close" (click)="removeTodo(i, $event)">×</span>
                     <div class="inline checkbox c-checkbox">
                         <label (click)="$event.stopPropagation()">
                             <input type="checkbox" [(ngModel)]="item.complete" id="{{'todo-item-'+$index}}" [disabled]="editingTodo" />
