@@ -55,6 +55,10 @@ const Widgets = {
         text: 'To do list',
         link: '/widgets/todolist'
       },
+      {
+        text: 'Weather',
+        link: '/widgets/weather'
+      },
   ]
 };
 
@@ -64,4 +68,3 @@ export const menu = [
     Pages,
     Widgets
 ];
-

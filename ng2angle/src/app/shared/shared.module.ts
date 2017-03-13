@@ -28,6 +28,7 @@ import { ColorsService } from './colors/colors.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/authguard.service';
 import { ToDoListService} from './services/todolist.service';
+import { WeatherService } from './services/weather.service';
 import { CheckallDirective } from './directives/checkall/checkall.directive';
 import { VectormapDirective } from './directives/vectormap/vectormap.directive';
 import { NowDirective } from './directives/now/now.directive';
@@ -62,7 +63,8 @@ import { JqcloudDirective } from './directives/jqcloud/jqcloud.directive';
         ColorsService,
         AuthService,
         ToDoListService,
-        AuthGuard
+        AuthGuard,
+        WeatherService,
     ],
     declarations: [
         FlotDirective,

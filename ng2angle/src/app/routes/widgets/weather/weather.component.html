@@ -1,0 +1,17 @@
+
+<div class="weather-app">
+  <div class="top">
+    <div class="temperature"><span id="temperature">{{weather.main.temp}}</span>&deg;C</div>
+    <div class="location"><span id="location">{{weather.name}}</span></div>
+  </div>
+
+  <div class="right top">
+    <div> max temperature: {{weather.main.temp_max}}&deg;C</div>
+    <div> min temperature: {{weather.main.temp_min}}&deg;C</div>
+  </div>
+
+  <div class="humidity left bottom">
+    <span id="humidity">{{weather.main.humidity}}</span>% Humidity
+  </div>
+
+</div>
