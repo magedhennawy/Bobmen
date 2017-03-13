@@ -44,7 +44,11 @@ function getUser(req, res, next){
 
 function authMiddleware(req, res, next){
   console.log(req.originalUrl);
-  if (!req.session.user) return res.status(403).end("Forbidden");
+  if (!req.session.user) {
+    res.clearCookie("username");
+    return res.status(403).end("Forbidden");
+  }
+  }
   return next()
 }
 
