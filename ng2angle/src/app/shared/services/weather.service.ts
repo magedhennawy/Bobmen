@@ -9,13 +9,7 @@ export class WeatherService{
 
   // Get weather from API
   getWeather(){
-    var APPID = '70ee68569d2e0954be0ddb2d55fb1786';
-    var Domain = 'http://api.openweathermap.org/data/2.5/weather?q=';
-    var City = 'Toronto';
-    var Country = 'ca'
-    var API = Domain+City+','+Country+'&appid='+APPID+'&units=metric';
-    console.log(API)
-    return this.http.get(API,{}).map(response => response.json());
+    return this.http.get('/api/weather',{}).map(response => response.json());
   }
 
 }
