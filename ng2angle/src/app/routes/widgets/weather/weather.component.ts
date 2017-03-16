@@ -10,10 +10,9 @@ declare var $: any;
     providers: [WeatherService],
 })
 export class WeatherComponent implements OnInit {
-  weather: {}
+  weather: Object;
 
   constructor(private WeatherService: WeatherService) { }
-
     ngOnInit(){
       this.WeatherService.getWeather().subscribe(
         data => {
