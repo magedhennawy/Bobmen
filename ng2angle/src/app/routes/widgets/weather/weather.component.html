@@ -1,6 +1,11 @@
-
+<select #city>
+  <option value="Toronto">Toronto</option>
+  <option value="Vancouver">Vancouver</option>
+</select>
+<button (click)="getWeatherByCity(city.value)">Get Weather</button>
 <div class="weather-app">
   <div class="top">
+    {{weather.main}}
     <div class="temperature"><span id="temperature">{{weather.main.temp}}</span>&deg;C</div>
     <div class="location"><span id="location">{{weather.name}}</span></div>
   </div>
