@@ -20,8 +20,8 @@ This app will provide users with the office necessities that would usually requi
 - Widgets:
     - Modular implementation of widgets
     - User preferences saved for each widget.
-    - Widgets are re-orderable 
-    - Weather: 
+    - Widgets are re-orderable
+    - Weather:
         - User location and preferences are saved
     - To Do list :
         - Can add/remove items in "to do list" <i>fashion</i>
@@ -33,10 +33,10 @@ This app will provide users with the office necessities that would usually requi
     - Sign up
     - Sign in
     - Sign out
-        
+
 ## Additional features that will be complete by the Final version
 
-- Widetes:
+- Widgets:
     - Calendar:
         - View your calendar at a glance
     - Emails:
@@ -49,7 +49,7 @@ This app will provide users with the office necessities that would usually requi
 
 We are utilizing the MEAN stack to its full potential.
 
-M(ongoDB): will be used as our databse
+M(ongoDB): will be used as our database
 
 E(express): Backend technology
 
@@ -63,3 +63,7 @@ N(node.js): Backend technology
 
 - Implementing all of the widgets and features listed in such a way that it would be relatively easy to add a new widget and feature.
 - Using unexplored (by us) technologies, APIs, and modules to provide a wide range of distinct features.
+
+Frontend new technologies
+ - Gulp
+ - Bower

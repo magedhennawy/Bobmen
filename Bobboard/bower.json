@@ -1,0 +1,23 @@
+{
+  "name": "BobBoard",
+  "description": "Dashboard for all your needs",
+  "main": "app.js",
+  "authors": [
+    "Paul",
+    "Maged",
+    "Brandon"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/UTSCC09/Bobmen",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.3",
+    "bootstrap": "^3.3.7"
+  }
+}
