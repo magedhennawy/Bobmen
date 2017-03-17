@@ -33,7 +33,7 @@ function getWeatherSettings(req,res,next){
   })
 }
 
-function getWeather(req,res,next){
+function getWeatherByCity(req, res, next){
   Weather.findOne({userid: req.session.user._id},function(err,data){
     if(err){
       console.log(err);
@@ -42,7 +42,7 @@ function getWeather(req,res,next){
     else{
       var APPID = '70ee68569d2e0954be0ddb2d55fb1786';
       var Domain = 'http://api.openweathermap.org/data/2.5/weather?q=';
-      var City = 'Toronto';
+      var City = req.params.city;
       var Country = 'ca'
       var apiUrl = Domain+City+','+Country+'&appid='+APPID+'&units=metric';
       request.get(apiUrl, function(err, response, body){
@@ -63,7 +63,7 @@ module.exports = {
 
   updateWeatherSettings: updateWeatherSettings,
 
-  getWeather: getWeather,
+  getWeatherByCity: getWeatherByCity,
 
   getCityList: getCityList
 };
