@@ -8,9 +8,14 @@ export class WeatherService{
   constructor(private http: Http) {  }
 
   // Get weather from API
-  getWeatherByCity(city: String){
-    console.log("got into service, city is",city)
-    return this.http.get('/api/weatherbycity/'+city,{})
+  getWeather(){
+    return this.http.get('/api/weather/',{})
+    .map(response => response.json());
+  }
+
+  updateWeatherSettings(city: String, country:String, metric:Boolean){
+    var data = {cityId:city, countryId:country, celcius:metric};
+    return this.http.post('/api/weather/settings',data)
     .map(response => response.json());
   }
 
