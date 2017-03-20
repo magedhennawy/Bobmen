@@ -1,15 +1,22 @@
-<div id="weatherSettings">
-  <input type="text" placeholder="place city name here" #city/><br>
-  <input type="text" placeholder="place country name here" #country/><br>
-  <input type="radio" #metric checked/> Metric System<br>
+<div class="weather-app" *ngIf="shown === 'settings'" id="weatherSettings">
+  <em class="fa fa-arrow-left"(click)="shown = 'app'"></em>
+  <input type="text" placeholder="city (Toronto)" #city/><br>
+  <input type="text" placeholder="country (ca)" #country/><br>
+  <input type="radio" name="metric" #metric /> Metric System<br>
+  <input type="radio" name="metric"/> Imperial System<br>
 
-  <button (click)="updateWeatherSettings(city.value, country.value, metric.checked)">save</button>
+  <em class="fa fa-floppy-o"(click)="updateWeatherSettings(city.value, country.value, metric.checked)"></em>
 </div>
 
-<div class="weather-app">
+<div *ngIf="shown === 'app'" class="weather-app" id="weather-app">
   <div class="top">
-    <div class="temperature"><span id="temperature">{{weather?.main.temp}}</span>&deg;</div>
-    <div class="location"><span id="location">{{weather?.name}}</span></div>
+    <em class="fa fa-cog"(click)="shown = 'settings'"></em>
+    <div class="temperature">{{weather?.main.temp}}&deg;</div>
+    <div class="location"><span>{{weather?.name}}</span></div>
+    <div class="description">
+      <img src={{iconUrl}} id="icon">
+      <span>{{weather?.weather[0].description}}</span>
+    </div>
   </div>
 
   <div class="right top">

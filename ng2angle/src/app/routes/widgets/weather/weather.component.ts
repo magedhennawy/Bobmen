@@ -11,13 +11,17 @@ declare var $: any;
 })
 export class WeatherComponent implements OnInit {
   weather: Object;
+  shown: String;
+  iconUrl: String;
 
   constructor(private WeatherService: WeatherService) { }
     ngOnInit(){
       this.WeatherService.getWeather().subscribe(
         data => {
           this.weather = data;
-          console.log(this.weather);
+          this.shown = "app";
+          var iconCode = data.weather[0].icon;
+          this.iconUrl = "https://openweathermap.org/img/w/" + iconCode + ".png";
         })
     }
 
@@ -26,7 +30,7 @@ export class WeatherComponent implements OnInit {
       this.WeatherService.updateWeatherSettings(city, country, metric).subscribe(
         data => {
           this.weather = data;
-          console.log(data);
+          this.shown = "app";
         })
     }
 }

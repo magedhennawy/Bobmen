@@ -1,7 +1,6 @@
 .weather-app {
     margin: auto;
     width: 300px;
-    height: 250px;
     box-shadow: 10px 10px 50px #888888;
     overflow: hidden;
     text-align:center;
@@ -11,16 +10,11 @@
 
 .left {
     float: left;
-    background: #262626;
-    padding:10px;
     width:150px;
     height:100%;
-    color:white;
 }
 
 .temperature {
-    margin-top:30px;
-    margin-bottom:5px;
     font-size:32px;
     font-weight: bold;
     width: 150px;
@@ -28,21 +22,19 @@
 
 .location {
     font-size: 18px;
-    width:100%;
-    width:150px;
 }
 
 .right {
     float: right;
-    width:130px;
+    width:150px;
     height:100%;
 }
 
 .top {
-    height: 80px;
     width: 100%;
     margin: auto;
-    background: #cec;
+    background: #7f91ab;
+    color:white
 }
 
 .top img {
@@ -51,7 +43,7 @@
 
 .bottom {
     height: 70px;
-    background: #669999;
+    background: #7f858e;
     color: white;
     font-weight: bold;
 }
@@ -60,4 +52,9 @@
     padding: 8px;
     font-family: cursive;
     font-size: 18px;
+}
+
+.description{
+  background: #7ca9c3;
+  color:white;
 }
