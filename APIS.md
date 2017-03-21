@@ -28,3 +28,8 @@ To get a list of emails:
 https://developers.google.com/gmail/api/v1/reference/users/messages/list
 
 Would be neat if we could send emails, but that will come later on, i will throw the documentation link here anyways just in case: https://developers.google.com/gmail/api/v1/reference/users/messages/send
+
+
+###Motivational Quotes API. 
+https://theysaidso.com/api/#random
+Will dive deeper into it later.. last feature.
