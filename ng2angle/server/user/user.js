@@ -12,6 +12,14 @@ var checkPassword = function(user, password){
   return (user.saltedHash === value);
 };
 
+function twitterAuth(token, tokenSecret, profile, cb){
+  console.log(profile);
+    User.findOrCreate({ twitterId: profile.id }, function (err, user) {
+
+      return cb(err, user);
+    });
+}
+
 
 function createUser(req, res ,next){
   salt = crypto.randomBytes(16).toString('base64');
@@ -80,4 +88,5 @@ module.exports = {
   authMiddleware: authMiddleware,
   signIn: signIn,
   signOut: signOut,
+  twitterAuth: twitterAuth
 };
