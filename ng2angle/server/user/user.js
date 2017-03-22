@@ -18,7 +18,8 @@ function twitterAuth(req, token, tokenSecret, profile, cb){
     console.log(token);
     console.log(tokenSecret);
     console.log(req.session.user);
-    Twitter.findOrCreate({ _id: req.session.user._id}, {twitterId: profile.id, tokenSecret: tokenSecret, token:token}, function (err, user) {
+    //what needs to happen is you create an entry in Twitter with the profileID, tokensecret, and token, along with the userID
+    Twitter.findOrCreate({ userId: req.session.user._id}, {twitterId: profile.id, tokenSecret: tokenSecret, token:token}, function (err, user) {
       return cb(err, user);
     });
 }
