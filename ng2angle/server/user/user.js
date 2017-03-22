@@ -3,6 +3,7 @@
  */
 
 var User = require('./user.model');
+var Twitter = require('./twitter.model');
 var crypto = require('crypto');
 
 var checkPassword = function(user, password){
@@ -12,10 +13,12 @@ var checkPassword = function(user, password){
   return (user.saltedHash === value);
 };
 
-function twitterAuth(token, tokenSecret, profile, cb){
+function twitterAuth(req, token, tokenSecret, profile, cb){
   console.log(profile);
-    User.findOrCreate({ twitterId: profile.id }, function (err, user) {
-
+    console.log(token);
+    console.log(tokenSecret);
+    console.log(req.session.user);
+    Twitter.findOrCreate({ _id: req.session.user._id}, {twitterId: profile.id, tokenSecret: tokenSecret, token:token}, function (err, user) {
       return cb(err, user);
     });
 }
