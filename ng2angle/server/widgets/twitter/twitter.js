@@ -25,7 +25,7 @@ function getTweets(req, res, next){
 
     var params = {screen_name: 'nodejs'};
 
-    client.get('statuses/user_timeline', params, function(error, tweets, response){
+    client.get('statuses/home_timeline', params, function(error, tweets, response){
       if (!error) {
         console.log(tweets);
         res.json(tweets);
