@@ -6,7 +6,7 @@ var Schema       = mongoose.Schema;
 
 var twitterSchema   = new Schema({
   userId: {
-    type: Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId
   },
   token: {
     type: String
