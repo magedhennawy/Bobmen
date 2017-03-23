@@ -27,10 +27,12 @@ export class WeatherComponent implements OnInit {
 
     updateWeatherSettings(city, country, metric){
       console.log(city, country, metric);
-      this.WeatherService.updateWeatherSettings(city, country, metric).subscribe(
-        data => {
-          this.weather = data;
-          this.shown = "app";
-        })
+      if((city!='')||(country!='')){
+        this.WeatherService.updateWeatherSettings(city, country, metric).subscribe(
+          data => {
+            this.weather = data;
+            this.shown = "app";
+          })
+      }
     }
 }
