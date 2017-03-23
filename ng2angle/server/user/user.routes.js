@@ -34,8 +34,9 @@ router.post('/user/signin', user.signIn);
 
 router.use('*', user.authMiddleware);
 router.get('/auth/twitter', passport.authenticate('twitter'));
-router.get('/auth/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/' }),
+router.get('/auth/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/' , session: false}),
   function(req, res) {
+  res.redirect('/')
     console.log(req.url);
   });
 router.get('/user/signout', user.signOut);

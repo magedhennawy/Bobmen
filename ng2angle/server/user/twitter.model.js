@@ -11,7 +11,7 @@ var twitterSchema   = new Schema({
   token: {
     type: String
   },
-  tokeSecret: {
+  tokenSecret: {
     type: String
   },
   twitterId: {

@@ -14,13 +14,30 @@ var checkPassword = function(user, password){
 };
 
 function twitterAuth(req, token, tokenSecret, profile, cb){
-  console.log(profile);
-    console.log(token);
-    console.log(tokenSecret);
-    console.log(req.session.user);
+
     //what needs to happen is you create an entry in Twitter with the profileID, tokensecret, and token, along with the userID
-    Twitter.findOrCreate({ userId: req.session.user._id}, {twitterId: profile.id, tokenSecret: tokenSecret, token:token}, function (err, user) {
-      return cb(err, user);
+    Twitter.findOne({userId: req.session.user._id}, function (err, user){
+      if(user){
+        console.log(user);
+        console.log('KEK');
+        return cb(err, user)
+      }
+      else{
+        var twitter = new Twitter({
+          userId: req.session.user._id,
+          twitterId: profile.id,
+          tokenSecret: tokenSecret,
+          token: token
+        });
+        Twitter.create(twitter, function (err, data) {
+          if (err)
+            return cb(err, twitter)
+          else{
+            return cb(err, data)
+          }
+        });
+      }
+
     });
 }
 

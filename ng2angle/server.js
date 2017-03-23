@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var router = require('./router');
 var session = require('express-session');
+var passport = require('passport');
 
 var cookieParser = require('cookie-parser');
 
@@ -22,6 +23,8 @@ const app = express();
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(passport.initialize());
 
 app.use(cookieParser());
 var MemoryStore =session.MemoryStore;
