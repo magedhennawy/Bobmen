@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TreeModule } from 'angular2-tree-component';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { SelectModule } from 'ng2-select';
-import { TwitterService } from 'ng2-twitter';
+import { TwitterService } from '../../shared/services/twitter.service';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
