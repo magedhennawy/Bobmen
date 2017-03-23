@@ -1,9 +1,9 @@
 <div class="weather-app" *ngIf="shown === 'settings'" id="weatherSettings">
   <em class="fa fa-arrow-left"(click)="shown = 'app'"></em>
-  <input type="text" placeholder="city (Toronto)" #city/><br>
-  <input type="text" placeholder="country (ca)" #country/><br>
-  <input type="radio" name="metric" #metric /> Metric System<br>
-  <input type="radio" name="metric"/> Imperial System<br>
+  <input type="text" placeholder="city (Toronto)" #city /><br>
+  <input type="text" placeholder="country (ca)" #country /><br>
+  <input type="radio" name="metric" #metric />Metric System<br>
+  <input type="radio" name="metric"/>Imperial System<br>
 
   <em class="fa fa-floppy-o"(click)="updateWeatherSettings(city.value, country.value, metric.checked)"></em>
 </div>

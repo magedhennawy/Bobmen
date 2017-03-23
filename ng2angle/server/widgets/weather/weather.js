@@ -17,15 +17,18 @@ function getWeather(req, res, next){
       res.status(500).json({error: err})
     }
     else{
+      var units = 'metric';
+      var City = "Toronto";
+      var Country = "ca";
+      if(data != null){
+        City = data.cityId;
+        Country = data.countryId;
+        if(data.celsius != true){
+          units = 'imperial';
+        }
+      }
       var APPID = '70ee68569d2e0954be0ddb2d55fb1786';
       var Domain = 'http://api.openweathermap.org/data/2.5/weather?q=';
-      var City = data.cityId;
-      var Country = data.countryId;
-      var units = 'metric';
-      console.log()
-      if(data.celsius != true){
-        units = 'imperial';
-      }
       var apiUrl = Domain+City+','+Country+'&appid='+APPID+'&units='+units;
       request.get(apiUrl, function(err, response, body){
         if(err){
