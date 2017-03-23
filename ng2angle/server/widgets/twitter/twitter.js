@@ -28,6 +28,7 @@ function getTweets(req, res, next){
     client.get('statuses/user_timeline', params, function(error, tweets, response){
       if (!error) {
         console.log(tweets);
+        res.json(tweets);
       }
     })
 
