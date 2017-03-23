@@ -63,7 +63,7 @@ const Widgets = {
       },
     {
       text: 'Twitter',
-      link: '/widgets/weather'
+      link: '/widgets/twitter'
     }
   ]
 };
