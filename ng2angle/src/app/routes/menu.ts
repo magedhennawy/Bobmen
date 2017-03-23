@@ -10,6 +10,7 @@ const headingMain = {
     heading: true
 };
 
+/*
 const Pages = {
   text: 'Pages',
   link: '/pages',
@@ -45,6 +46,7 @@ const Pages = {
     }
   ]
 };
+*/
 
 const Widgets = {
   text: 'Widgets',
@@ -65,6 +67,6 @@ const Widgets = {
 export const menu = [
     headingMain,
     Home,
-    Pages,
+    //Pages,
     Widgets
 ];
