@@ -17,8 +17,8 @@ export const routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', loadChildren: './home/home.module#HomeModule' },
-      { path: 'widgets', loadChildren: './widgets/widgets.module#WidgetsModule' },
+      { path: 'home', loadChildren: './home/home.module#HomeModule',canActivate: [AuthGuard]},
+      { path: 'widgets', loadChildren: './widgets/widgets.module#WidgetsModule',canActivate: [AuthGuard] },
     ]
   },
 
