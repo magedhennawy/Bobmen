@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToDoListService } from '../../../shared/services/todolist.service';
 import {createScope} from "@angular/core/src/profile/wtf_impl";
-
+var test = require("../../../../../config");
 declare var $: any;
 
 @Component({
@@ -37,6 +37,7 @@ export class TodolistComponent implements OnInit {
     //constructor() { }
 
     ngOnInit() {
+      console.log(test);
       this.ToDoListService.getAllPosts().subscribe(data =>{
         if(data.length > 0){
           this.items = data[0].toDoList;
