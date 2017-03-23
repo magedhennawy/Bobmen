@@ -30,7 +30,7 @@ app.use(cookieParser());
 var MemoryStore =session.MemoryStore;
 app.use(session({
   name : 'app.sid',
-  secret: "1234567890QWERTY",
+  secret: "1234567890123123QWERTY",
   resave: true,
   store: new MemoryStore(),
   saveUninitialized: true

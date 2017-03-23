@@ -3,7 +3,7 @@
  */
 
 var User = require('./user.model');
-var Twitter = require('./twitter.model');
+var Twitter = require('./../widgets/twitter/twitter.model.js');
 var crypto = require('crypto');
 
 var checkPassword = function(user, password){

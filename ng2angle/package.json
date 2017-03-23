@@ -81,6 +81,7 @@
     "spinkit": "1.2.5",
     "summernote": "0.8.2",
     "ts-helpers": "1.1.1",
+    "twitter": "^1.7.0",
     "weather-icons": "github:erikflowers/weather-icons",
     "whirl": "github:jh3y/whirl",
     "zone.js": "0.7.6"
