@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Cookie } from 'ng2-cookies';
 
 @Injectable()
 export class UserblockService {
@@ -6,6 +7,10 @@ export class UserblockService {
     constructor() {
         // initially visible
         this.userBlockVisible  = true;
+    }
+
+    getCurrentUser(){
+      return Cookie.get('username');
     }
 
     getVisibility() {

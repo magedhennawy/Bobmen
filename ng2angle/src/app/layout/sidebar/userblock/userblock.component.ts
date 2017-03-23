@@ -12,6 +12,7 @@ export class UserblockComponent implements OnInit {
     constructor(private userblockService: UserblockService) {
 
         this.user = {
+            name: this.userblockService.getCurrentUser(),
             picture: 'assets/img/user/01.jpg'
         };
     }

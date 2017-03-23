@@ -61,6 +61,10 @@ const Widgets = {
         text: 'Weather',
         link: '/widgets/weather'
       },
+    {
+      text: 'Twitter',
+      link: '/widgets/weather'
+    }
   ]
 };
 
