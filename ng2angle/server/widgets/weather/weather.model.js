@@ -1,15 +1,20 @@
+/**
+ * Updated by Brandon on 3/17/2017.
+ */
 var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
 var weatherSchema   = new Schema({
-  userid: Schema.Types.ObjectId,
+  _id: Schema.Types.ObjectId,
   celsius: {
     type: Boolean,
-    default: true
+    default: true,
   },
   cityId: {
-    type: Number,
-    default: 6167865
+    type: String,
+  },
+  countryId: {
+    type:String,
   }
 
 

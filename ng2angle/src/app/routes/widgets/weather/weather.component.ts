@@ -10,18 +10,23 @@ declare var $: any;
     providers: [WeatherService],
 })
 export class WeatherComponent implements OnInit {
-  weather = {main:{humidity:5}};
+  weather: Object;
 
   constructor(private WeatherService: WeatherService) { }
-
     ngOnInit(){
       this.WeatherService.getWeather().subscribe(
-        main => {
-          this.weather = main;
+        data => {
+          this.weather = data;
           console.log(this.weather);
         })
     }
 
-
-
+    updateWeatherSettings(city, country, metric){
+      console.log(city, country, metric);
+      this.WeatherService.updateWeatherSettings(city, country, metric).subscribe(
+        data => {
+          this.weather = data;
+          console.log(data);
+        })
+    }
 }

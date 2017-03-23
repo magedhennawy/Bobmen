@@ -1,17 +1,28 @@
+<div id="weatherSettings">
+  <input type="text" placeholder="place city name here" #city/><br>
+  <input type="text" placeholder="place country name here" #country/><br>
+  <input type="radio" #metric checked/> Metric System<br>
+
+  <button (click)="updateWeatherSettings(city.value, country.value, metric.checked)">save</button>
+</div>
 
 <div class="weather-app">
   <div class="top">
-    <div class="temperature"><span id="temperature">{{weather.main.temp}}</span>&deg;C</div>
-    <div class="location"><span id="location">{{weather.name}}</span></div>
+    <div class="temperature"><span id="temperature">{{weather?.main.temp}}</span>&deg;</div>
+    <div class="location"><span id="location">{{weather?.name}}</span></div>
   </div>
 
   <div class="right top">
-    <div> max temperature: {{weather.main.temp_max}}&deg;C</div>
-    <div> min temperature: {{weather.main.temp_min}}&deg;C</div>
+    <div> max temperature: {{weather?.main.temp_max}}&deg;</div>
+    <div> min temperature: {{weather?.main.temp_min}}&deg;</div>
   </div>
 
   <div class="humidity left bottom">
-    <span id="humidity">{{weather.main.humidity}}</span>% Humidity
+    Humidity: <span id="humidity">{{weather?.main.humidity}}</span>%
+  </div>
+
+  <div class="humidity right bottom">
+    Wind Speed: <span id="wind">{{weather?.wind.speed}}</span>
   </div>
 
 </div>

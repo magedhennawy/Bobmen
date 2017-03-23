@@ -13,6 +13,9 @@ var userSchema   = new Schema({
   },
   saltedHash: {
     type: Object
+  },
+  twitterId: {
+    type: String
   }
 
   });

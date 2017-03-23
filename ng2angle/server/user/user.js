@@ -3,6 +3,7 @@
  */
 
 var User = require('./user.model');
+var Twitter = require('./twitter.model');
 var crypto = require('crypto');
 
 var checkPassword = function(user, password){
@@ -11,6 +12,17 @@ var checkPassword = function(user, password){
   var value = hash.digest('base64');
   return (user.saltedHash === value);
 };
+
+function twitterAuth(req, token, tokenSecret, profile, cb){
+  console.log(profile);
+    console.log(token);
+    console.log(tokenSecret);
+    console.log(req.session.user);
+    //what needs to happen is you create an entry in Twitter with the profileID, tokensecret, and token, along with the userID
+    Twitter.findOrCreate({ userId: req.session.user._id}, {twitterId: profile.id, tokenSecret: tokenSecret, token:token}, function (err, user) {
+      return cb(err, user);
+    });
+}
 
 
 function createUser(req, res ,next){
@@ -80,4 +92,5 @@ module.exports = {
   authMiddleware: authMiddleware,
   signIn: signIn,
   signOut: signOut,
+  twitterAuth: twitterAuth
 };
