@@ -10,11 +10,20 @@ const path = require('path');
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook');
 var TwitterStrategy = require('passport-twitter');
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
 /*var gogle = require('googleapis');
 var googleAuth = require('google-auth-library');*/
 
 //-----------Google ---------///
 
+passport.use(new GoogleStrategy({
+    clientID: 'GOOGLE_CLIENT_ID',
+    clientSecret: 'GOOGLE_CLIENT_SECRET',
+    callbackURL: "http://www.example.com/auth/google/callback",
+    passReqToCallback: true
+},
+user.googleAuth
+))
 
 
 //-----------Twitter ---------///

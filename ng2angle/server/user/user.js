@@ -3,7 +3,8 @@
  */
 
 var User = require('./user.model');
-var Twitter = require('./../widgets/twitter/twitter.model.js');
+var Twitter = require('./../widgets/twitter/twitter.model');
+var Google = require('./../widgets/google/google.model');
 var crypto = require('crypto');
 
 var checkPassword = function(user, password){
@@ -12,6 +13,11 @@ var checkPassword = function(user, password){
   var value = hash.digest('base64');
   return (user.saltedHash === value);
 };
+
+function googleAuth(req, token, tokenSecret, profile, cb){
+  return cb(err, data);
+}
+
 
 function twitterAuth(req, token, tokenSecret, profile, cb){
 
@@ -77,8 +83,15 @@ function authMiddleware(req, res, next){
     res.clearCookie("username");
     return res.status(403).end("Forbidden");
   }
-
   return next()
+}
+
+function frontEndMiddleware(req,res,next){
+  if (!req.session.user) {
+    res.clearCookie("username");
+    return next();
+  }
+  return next();
 }
 
 function signOut(req,res,next){
@@ -109,5 +122,7 @@ module.exports = {
   authMiddleware: authMiddleware,
   signIn: signIn,
   signOut: signOut,
-  twitterAuth: twitterAuth
+  twitterAuth: twitterAuth,
+  googleAuth: googleAuth,
+  frontEndMiddleware: frontEndMiddleware
 };

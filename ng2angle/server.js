@@ -10,6 +10,8 @@ var passport = require('passport');
 
 var cookieParser = require('cookie-parser');
 
+var user = require('./server/user/user');
+
 
 
 mongoose.Promise = global.Promise;
@@ -44,6 +46,8 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Set our api routes
+
+app.use('/', user.frontEndMiddleware);
 app.use('/api', router);
 
 
