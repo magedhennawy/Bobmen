@@ -1,17 +1,48 @@
-import { Component } from '@angular/core';
-import { TwitterService } from 'ng2-twitter';
+import { Component,OnInit } from '@angular/core';
+import { TwitterService } from '../../../shared/services/twitter.service';
+
 
 @Component({
   selector: 'app-twitter',
   templateUrl: './twitter.component.html'
 })
-export class TwitterComponent {
-  title = 'app works!';
-  result = '';
+export class TwitterComponent implements OnInit  {
+
   constructor(private twitter: TwitterService){ }
 
+  title = 'app works!';
+  result = '';
+  ngOnInit() {}
+
+  getHomeTimeline() {
+
+    this.twitter.getTweets().subscribe(data=>{
+      this.result = data.json().map(tweet => tweet.text)
+    });
+
+    /*    this.twitter.getTweets().subscribe(res => {
+      this.result = res.json().map(tweet => tweet.text);
+    });*/
+  }
+  /*result = '';
+  constructor(private twitter: TwitterService){ }
+
+  ngOnInit() {
+/!*    this.ToDoListService.getAllPosts().subscribe(data =>{
+      if(data.length > 0){
+        this.items = data[0].toDoList;
+      }else{
+        this.items = [];
+      }
+    })*!/
+  }
+
   getHomeTimeline(){
-    this.twitter.get(
+    this.twitter.getTweets().subscribe(res =>{
+      this.result = res.json().map(tweet => tweet.text);
+    });
+
+    /!*    this.twitter.get(
       'https://api.twitter.com/1.1/statuses/home_timeline.json',
       {
         count: 5
@@ -26,6 +57,6 @@ export class TwitterComponent {
       }
     ).subscribe((res)=>{
       this.result = res.json().map(tweet => tweet.text);
-    });
-  }
+    });*!/
+  }*/
 }
