@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
-import { HomeComponent } from './home/home.component';
+import { SharedModule } from '../../shared/shared.module';
+import { TreeModule } from 'angular2-tree-component';
+import { SelectModule } from 'ng2-select';
 import { Routes, RouterModule } from '@angular/router';
+
+import { HomeComponent } from './home/home.component';
+import { WeatherComponent } from '../widgets/weather/weather.component';
+import { TodolistComponent } from '../widgets/todolist/todolist.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -8,11 +14,21 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        RouterModule.forChild(routes)
+      SharedModule,
+      RouterModule.forChild(routes),
+      TreeModule,
+      SelectModule
     ],
-    declarations: [HomeComponent],
+    declarations: [
+      HomeComponent,
+      WeatherComponent,
+      TodolistComponent,
+    ],
     exports: [
-        RouterModule
+        RouterModule,
+        HomeComponent,
+        WeatherComponent,
+        TodolistComponent,
     ]
 })
 export class HomeModule { }

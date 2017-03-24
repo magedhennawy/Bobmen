@@ -7,11 +7,11 @@ import { SelectModule } from 'ng2-select';
 import { SharedModule } from '../../shared/shared.module';
 
 import { TodolistComponent } from './todolist/todolist.component';
-import { WeatherComponent } from './weather/weather.component';
+// import { WeatherComponent } from './weather/weather.component';
 
 const routes: Routes = [
-  { path: 'todolist', component: TodolistComponent },
-  { path: 'weather', component: WeatherComponent },
+  // { path: 'todolist', component: TodolistComponent },
+  // { path: 'weather', component: WeatherComponent },
 ];
 
 @NgModule({
@@ -25,8 +25,8 @@ const routes: Routes = [
     SelectModule
   ],
   declarations: [
-    TodolistComponent,
-    WeatherComponent,
+    // TodolistComponent,
+    // WeatherComponent,
   ],
   exports: [
     RouterModule
