@@ -25,9 +25,7 @@
     <em class="fa fa-refresh pull-right" (click)="getHomeTimeline()"
                 style="padding:8px;"></em><br>
   </div>
-  <!-- START list group-->
   <div class="list-group" height="180" *ngFor="let tweet of result">
-      <!-- START list group item-->
       <div class="list-group-item">
           <div class="media-box">
               <div class="pull-left">
@@ -45,10 +43,7 @@
               </div>
           </div>
       </div>
-      <!-- END list group item-->
   </div>
-  <!-- END list group-->
-
 </div>
 
 
