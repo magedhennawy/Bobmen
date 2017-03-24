@@ -17,7 +17,7 @@ export class TwitterComponent implements OnInit  {
   getHomeTimeline() {
 
     this.twitter.getTweets().subscribe(data=>{
-      this.result = data.json().map(tweet => tweet.text)
+      this.result = data.map(tweet => tweet.text)
     });
 
     /*    this.twitter.getTweets().subscribe(res => {
