@@ -11,18 +11,24 @@ export class TwitterComponent implements OnInit  {
   constructor(private twitter: TwitterService){ }
 
   result = [];
-  ngOnInit() {}
+  getTweets = function(){
+    this.twitter.getTweets().subscribe(
+      data => {
+        this.result = data;
+        console.log(data);
+      })
+  }
+  ngOnInit(){
+    this.getTweets();
+  }
 
   getHomeTimeline() {
-
-    this.twitter.getTweets().subscribe(data=>{
-      this.result = data;
-    });
+    this.getTweets();
 
     /*    this.twitter.getTweets().subscribe(res => {
       this.result = res.json().map(tweet => tweet.text);
     });*/
-  }
+}
   /*result = '';
   constructor(private twitter: TwitterService){ }
 
