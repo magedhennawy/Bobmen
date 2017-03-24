@@ -10,14 +10,13 @@ export class TwitterComponent implements OnInit  {
 
   constructor(private twitter: TwitterService){ }
 
-  title = 'app works!';
-  result = '';
+  result = [];
   ngOnInit() {}
 
   getHomeTimeline() {
 
     this.twitter.getTweets().subscribe(data=>{
-      this.result = data.map(tweet => tweet.text)
+      this.result = data;
     });
 
     /*    this.twitter.getTweets().subscribe(res => {
