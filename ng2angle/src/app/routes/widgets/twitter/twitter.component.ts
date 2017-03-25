@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { TwitterService } from '../../../shared/services/twitter.service';
+import {Observable} from 'rxjs/Rx';
 
 
 @Component({
@@ -14,56 +15,24 @@ export class TwitterComponent implements OnInit  {
 
   result = [];
   getTweets = function(){
-    this.twitter.getTweets().subscribe(
+    this.twitter.getTweets().catch(err =>  {
+      document.getElementById("twitterConnect").style.display = "block";
+    }).subscribe(
       data => {
-        this.result = data;
         console.log(data);
+        document.getElementById("twitterConnect").style.display = "hidden";
+        this.result = data;
       })
-  }
+  };
   ngOnInit(){
     this.getTweets();
   }
 
   getHomeTimeline() {
     this.getTweets();
-
-    /*    this.twitter.getTweets().subscribe(res => {
-      this.result = res.json().map(tweet => tweet.text);
-    });*/
-}
-  /*result = '';
-  constructor(private twitter: TwitterService){ }
-
-  ngOnInit() {
-/!*    this.ToDoListService.getAllPosts().subscribe(data =>{
-      if(data.length > 0){
-        this.items = data[0].toDoList;
-      }else{
-        this.items = [];
-      }
-    })*!/
   }
 
-  getHomeTimeline(){
-    this.twitter.getTweets().subscribe(res =>{
-      this.result = res.json().map(tweet => tweet.text);
-    });
-
-    /!*    this.twitter.get(
-      'https://api.twitter.com/1.1/statuses/home_timeline.json',
-      {
-        count: 5
-      },
-      {
-        consumerKey: 'FXDtQ7RZtklmxUDEF1EYo1jwG',
-        consumerSecret: 'eMUZrNImOdeIX9xH8Qjfr5uGrmjtlFQyhY1QlLfuZwalv8mW3A'
-      },
-      {
-        token: '319691429-Dt2DKEdlzYylV58aefumrpXM32WOFKDpzDnbNnWf',
-        tokenSecret: 'QIRKC06Wu5ExtiT6LMOmJ9YL3BRD4loLmtmEUMdt9tbnx'
-      }
-    ).subscribe((res)=>{
-      this.result = res.json().map(tweet => tweet.text);
-    });*!/
-  }*/
+  connectToTwitter(){
+    location.href = "/api/auth/twitter";
+  }
 }

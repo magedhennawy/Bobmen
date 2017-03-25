@@ -1,31 +1,16 @@
-
-<!--<tr *ngFor="let tweet of result">
-  <td>{{tweet.user.screen_name}}</td><br><br>
-  <td>{{tweet.user.location}}</td><br><br>
-  <td>{{tweet.user.profile_image_url}}</td><br><br>
-  <td>{{tweet.user.created_at}}</td><br><br>
-  <td>{{tweet.user.followers_count}}</td><br><br>
-  <td>{{tweet.text}}</td>
-</tr>-->
-
-<!-- <div *ngFor="let tweet of result">
-  <div >
-    <img src="{{tweet.user.profile_image_url}}" alt="">
-  </div>
-  <div> Name: {{tweet.user.name}}</div>
-  <div class="col-sm-3">Location: {{tweet.user.location}}</div>
-  <div class="col-sm-2">Followers: {{tweet.user.followers_count}}</div>
-  <div>
-    <div class="col-sm-12 tweettext">{{tweet.text}}</div>
-  </div>
-</div> -->
-
 <div class="panel panel-default twitterPanel"
         style="width:350px;height:400px;overflow-y:scroll;">
+
+
+  <div class="panel-body">
+    <button class="mb-sm btn btn-primary" type="button" id="twitterConnect" (click)="connectToTwitter()" style="display: none;">Connect To Twitter</button>
+  </div>
+
   <div>
     <em class="fa fa-refresh pull-right" (click)="getHomeTimeline()"
                 style="padding:8px;"></em><br>
   </div>
+
   <div class="list-group" *ngFor="let tweet of result">
       <div class="list-group-item">
           <div class="media-box">

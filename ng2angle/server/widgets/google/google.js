@@ -72,14 +72,9 @@ function getGoogleProfile(res, userId, callback){
     if (err) return res.status(403).send('Google profile not found, db err')
     if(!data) return res.status(403).send('Google profile not found');
     return callback(data);
-
-
   })
 }
 function getEmails(req, res, next){
-
-
-
   getGoogleProfile(res, req.session.user._id, function(data){
 
     console.log(data);

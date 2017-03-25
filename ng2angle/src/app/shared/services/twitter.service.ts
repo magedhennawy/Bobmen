@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import {Observable} from 'rxjs/Rx';
 
 @Injectable()
 export class TwitterService {
@@ -10,6 +11,9 @@ export class TwitterService {
   // Get all posts from the API
   getTweets() {
     return this.http.get('/api/twitter/tweets')
+      .catch(err =>  {
+        return Observable.throw(err.status); // observable needs to be returned or exception raised
+      })
       .map((res:Response) => res.json());
   }
 
