@@ -5,7 +5,6 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
 import { SelectModule } from 'ng2-select';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { SharedModule } from '../../shared/shared.module';
 
 import { TodolistComponent } from './todolist/todolist.component';
@@ -14,12 +13,7 @@ import { TwitterComponent } from './twitter/twitter.component';
 import { GoogleComponent } from './google/google.component';
 
 
-const routes: Routes = [
-  { path: 'todolist', component: TodolistComponent },
-  { path: 'weather', component: WeatherComponent },
-  { path: 'twitter', component: TwitterComponent},
-  { path: 'google', component: GoogleComponent},
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [
@@ -33,12 +27,7 @@ const routes: Routes = [
     }),
     SelectModule
   ],
-  declarations: [
-    TodolistComponent,
-    WeatherComponent,
-    TwitterComponent,
-    GoogleComponent
-  ],
+  declarations: [],
   exports: [
     RouterModule
   ]

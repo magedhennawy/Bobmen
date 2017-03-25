@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { passwordSaverService } from '../../../shared/services/passwordsaver.service';
+import { PasswordSaverService } from '../../../shared/services/passwordsaver.service';
 import {createScope} from "@angular/core/src/profile/wtf_impl";
 declare var $: any;
 
@@ -30,7 +30,7 @@ export class PasswordSaverComponent implements OnInit {
     current = {};
 
 
-    constructor(private passwordSaverService: passwordSaverService) { }
+    constructor(private passwordSaverService: PasswordSaverService) { }
 
 
     //constructor() { }

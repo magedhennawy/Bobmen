@@ -29,8 +29,6 @@ function getStrategy(){
       //what needs to happen is you create an entry in Twitter with the profileID, tokensecret, and token, along with the userID
       TwitterDB.findOne({userId: req.session.user._id}, function (err, user){
         if(user){
-          console.log(user);
-          console.log('KEK');
           return cb(err, user)
         }
         else{
@@ -55,7 +53,6 @@ function getStrategy(){
 }
 function getTweets(req, res, next){
   getTwitterProfile(req.session.user._id, function(data){
-    console.log(data);
     var client = new Twitter({
       consumer_key: twitterConfig.twitterconfig.consumerKey,
       consumer_secret: twitterConfig.twitterconfig.consumerSecret,
@@ -64,7 +61,6 @@ function getTweets(req, res, next){
     });
     var params = {screen_name: 'nodejs', count: 10};
     client.get('statuses/home_timeline', params, function(err, tweets, response){
-      console.log(response);
       if (err) return res.status(500).send(err);
 
       return res.json(tweets);
