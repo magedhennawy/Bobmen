@@ -100,7 +100,7 @@ function getEmails(req, res, next){
        if (err) return res.status(500).send(err);
        return res.json(response);
      }
-    )
+    );
 
 
     /*
@@ -126,8 +126,47 @@ function getEmails(req, res, next){
 
 
 function getEvents(req,res, next){
+  getGoogleProfile(req.session.user._id, function(data){
+    console.log(data);
+    oauth2Client.setCredentials({
 
-  return;
+      access_token: data.token,
+      refresh_token: data.tokenSecret
+      // Optional, provide an expiry_date (milliseconds since the Unix Epoch)
+      // expiry_date: (new Date()).getTime() + (1000 * 60 * 60 * 24 * 7)
+    });
+
+    calendar.events.list({
+        calendarId: 'primary',
+        auth: oauth2Client,
+        maxResults: 10,
+        timeMin: new Date(Date.now()).toISOString()
+      },
+      function(err, response){
+        if (err) return res.status(500).send(err);
+        return res.json(response);
+      }
+    );
+
+
+    /*
+     var client = new Twitter({
+     consumer_key: 'HRzzSlnUoIur8wPxJc8W4kdt2',
+     consumer_secret: '9O3tpd5MOI0sMmAFkChdvSoU7hhbej7hzAhQaqKQYtRyV2l7Ty',
+     access_token_key: data.token,
+     access_token_secret: data.tokenSecret
+     });
+
+     var params = {screen_name: 'nodejs'};
+
+     client.get('statuses/home_timeline', params, function(error, tweets, response){
+     if (!error) {
+     console.log(tweets);
+     res.json(tweets);
+     }
+     })
+     */
+  })
 }
 
 
