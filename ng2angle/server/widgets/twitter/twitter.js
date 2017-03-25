@@ -62,7 +62,7 @@ function getTweets(req, res, next){
       access_token_key: data.token,
       access_token_secret: data.tokenSecret
     });
-    var params = {screen_name: 'nodejs', count: 5};
+    var params = {screen_name: 'nodejs', count: 10};
     client.get('statuses/home_timeline', params, function(error, tweets, response){
       if (!error) {
         res.json(tweets);

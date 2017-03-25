@@ -20,13 +20,12 @@
   </div>
 </div> -->
 
-<div class="panel panel-default twitterPanel"
-        style="width:350px;height:400px;overflow-y:scroll;">
+<div class="panel panel-default" style="width:350px;">
   <div>
     <em class="fa fa-refresh pull-right" (click)="getHomeTimeline()"
                 style="padding:8px;"></em><br>
   </div>
-  <div class="list-group" *ngFor="let tweet of result">
+  <div class="list-group" height="180" *ngFor="let tweet of result">
       <div class="list-group-item">
           <div class="media-box">
               <div class="pull-left">

@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule, Http } from '@angular/http';
 import { TranslateService, TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
+import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
+
 
 import { AppComponent } from './app.component';
 
@@ -25,6 +27,7 @@ export function createTranslateLoader(http: Http) {
         LayoutModule,
         SharedModule.forRoot(),
         RoutesModule,
+        AlertModule.forRoot(),
         TranslateModule.forRoot({
             provide: TranslateLoader,
             useFactory: (createTranslateLoader),
