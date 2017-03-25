@@ -35,8 +35,22 @@ const Widgets = {
   ]
 };
 
+const SocialMedia = {
+  text: 'Social Media',
+  link: '/socialmedia',
+  icon: 'icon-user-follow',
+  submenu: [
+    {
+      text: 'twitter',
+      link: '/socialmedia/twitter',
+      icon: 'icon-social-twitter'
+    }
+  ]
+};
+
 export const menu = [
     headingMain,
     Home,
-    Widgets
+    Widgets,
+    SocialMedia
 ];
