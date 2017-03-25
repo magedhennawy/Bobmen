@@ -74,6 +74,32 @@ function getGoogleProfile(res, userId, callback){
     return callback(data);
   })
 }
+
+
+function getThread(res, messages, stuff,  oauth2Client){
+
+  if(messages.length == 0){
+    console.log(stuff);
+    return res.send(stuff);
+  }
+  console.log(messages);
+  gmail.users.messages.get({
+      userId: 'me',
+      auth: oauth2Client,
+      id: messages[0].id
+
+
+    },
+    function(err, response){
+      if (err) return res.status(500).send(err);
+      messages.splice(0,1);
+      stuff.push(response);
+      return getThread(res, messages, stuff, oauth2Client)
+    }
+  );
+
+}
+
 function getEmails(req, res, next){
   getGoogleProfile(res, req.session.user._id, function(data){
 
@@ -86,15 +112,18 @@ function getEmails(req, res, next){
       // expiry_date: (new Date()).getTime() + (1000 * 60 * 60 * 24 * 7)
     });
 
-    gmail.users.threads.list({
+    gmail.users.messages.list({
       userId: 'me',
       auth: oauth2Client,
       q: 'is:unread',
-      maxResults: 10
+      maxResults: 4
     },
      function(err, response){
        if (err) return res.status(500).send(err);
-       return res.json(response);
+        console.log(response);
+       var stuff = [];
+       getThread(res, response.messages, stuff, oauth2Client)
+
      }
     );
 
@@ -135,7 +164,7 @@ function getEvents(req,res, next){
       calendar.events.list({
           calendarId: 'primary',
           auth: oauth2Client,
-          maxResults: 10,
+          maxResults: 5,
           timeMin: new Date(Date.now()).toISOString()
         },
         function(err, response){
