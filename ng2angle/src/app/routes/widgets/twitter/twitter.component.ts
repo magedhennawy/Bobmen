@@ -4,7 +4,9 @@ import { TwitterService } from '../../../shared/services/twitter.service';
 
 @Component({
   selector: 'app-twitter',
-  templateUrl: './twitter.component.html'
+  templateUrl: './twitter.component.html',
+  styleUrls: ['./twitter.component.scss'],
+  providers: [TwitterService],
 })
 export class TwitterComponent implements OnInit  {
 
