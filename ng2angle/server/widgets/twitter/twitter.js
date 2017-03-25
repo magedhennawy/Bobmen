@@ -56,6 +56,7 @@ function getStrategy(){
 }
 function getTweets(req, res, next){
   getTwitterProfile(req.session.user._id, function(data){
+    if(!data) return res.status(403).send('User has no Google Account Linked');
     var client = new Twitter({
       consumer_key: twitterConfig.twitterconfig.consumerKey,
       consumer_secret: twitterConfig.twitterconfig.consumerSecret,
