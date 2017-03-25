@@ -1,28 +1,48 @@
-<div id="weatherSettings">
-  <input type="text" placeholder="place city name here" #city/><br>
-  <input type="text" placeholder="place country name here" #country/><br>
-  <input type="radio" #metric checked/> Metric System<br>
-
-  <button (click)="updateWeatherSettings(city.value, country.value, metric.checked)">save</button>
+<div *ngIf="shown === 'settings'" class="row row-table">
+  <div class="col-md-2 col-sm-3 col-xs-6 pv br">
+    <em class="fa fa-arrow-left"(click)="shown = 'app'"></em>
+  </div>
+  <div class="col-md-2 col-sm-3 col-xs-6 pv br">
+    <input type="text" placeholder="city (Toronto)" #city />
+  </div>
+  <div class="col-md-2 col-sm-3 col-xs-6 pv br">
+    <input type="text" placeholder="country (ca)" #country /><br>
+  </div>
+  <div class="col-md-2 col-sm-3 hidden-xs pv text-center">
+      <div class="text-bold text-sm">
+        <input type="radio" name="metric" #metric /> Metric System<br>
+        <input type="radio" name="metric"/> Imperial System<br>
+      </div>
+  </div>
+  <div class="col-md-2 col-sm-3 col-xs-6 pv">
+    <em class="fa fa-floppy-o"
+      (click)="updateWeatherSettings(city.value, country.value, metric.checked)">
+    </em>
+  </div>
 </div>
 
-<div class="weather-app">
-  <div class="top">
-    <div class="temperature"><span id="temperature">{{weather?.main.temp}}</span>&deg;</div>
-    <div class="location"><span id="location">{{weather?.name}}</span></div>
-  </div>
 
-  <div class="right top">
-    <div> max temperature: {{weather?.main.temp_max}}&deg;</div>
-    <div> min temperature: {{weather?.main.temp_min}}&deg;</div>
+<div *ngIf="shown === 'app'" class="row row-table">
+  <div class="col-md-2 col-sm-3 col-xs-6 text-center bg-info pv-xl">
+    <img src={{iconUrl}} class="fa-4x">
+    <div class="text-bold text-sm">{{weather?.name}}</div>
   </div>
-
-  <div class="humidity left bottom">
-    Humidity: <span id="humidity">{{weather?.main.humidity}}</span>%
+  <div class="col-md-2 col-sm-3 col-xs-6 pv br">
+      <div class="h1 m0 text-bold">{{weather?.main.temp}}&deg;</div>
+      <div class="text-uppercase">{{weather?.weather[0].description}}</div>
   </div>
-
-  <div class="humidity right bottom">
-    Wind Speed: <span id="wind">{{weather?.wind.speed}}</span>
+  <div class="col-md-2 col-sm-3 hidden-xs pv text-center br">
+      <div class="text-bold text-sm">
+        <div> max temperature: {{weather?.main.temp_max}}&deg;</div>
+        <div> min temperature: {{weather?.main.temp_min}}&deg;</div>
+      </div>
   </div>
-
-</div>
+  <div class="col-md-2 col-sm-3 hidden-xs pv text-center">
+      <div class="text-bold text-sm">
+        <div>Humidity: {{weather?.main.humidity}}%</div>
+        <div>Wind Speed: {{weather?.wind.speed}} </div>
+      </div>
+  </div>
+  <div>
+    <em class="fa fa-cog col-md-2 col-sm-3 hidden-xs pv text-center"(click)="shown = 'settings'"></em>
+  </div>
