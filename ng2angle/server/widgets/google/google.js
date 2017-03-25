@@ -67,9 +67,9 @@ function getStrategy(){
   )
 }
 
-function getGoogleProfile(userId, callback){
+function getGoogleProfile(res, userId, callback){
   Google.findOne({userId: userId}, function(err, data){
-    if (err) return res.status(500).send('Google profile not found')
+    if (err) return res.status(403).send('Google profile not found, db err')
     if(!data) return res.status(403).send('Google profile not found');
     return callback(data);
 
@@ -80,7 +80,7 @@ function getEmails(req, res, next){
 
 
 
-  getGoogleProfile(req.session.user._id, function(data){
+  getGoogleProfile(res, req.session.user._id, function(data){
 
     console.log(data);
     oauth2Client.setCredentials({
@@ -127,7 +127,7 @@ function getEmails(req, res, next){
 
 
 function getEvents(req,res, next){
-  getGoogleProfile(req.session.user._id, function(data){
+  getGoogleProfile(res, req.session.user._id, function(data){
       console.log(data);
       oauth2Client.setCredentials({
 

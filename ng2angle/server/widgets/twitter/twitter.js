@@ -8,10 +8,10 @@ var TwitterStrategy = require('passport-twitter');
 var Twitter = require('twitter');
 var user = require('../../user/user');
 
-function getTwitterProfile(userId, callback){
+function getTwitterProfile(res, userId, callback){
   TwitterDB.findOne({userId: userId}, function(err, data){
-    if (err) return res.status(500).send('Twitter profile not found');
-    if(!data) return res.status(403).send('User has no Google Account Linked');
+    if (err) return res.status(403).send('Twitter profile not found, db err');
+    if(!data) return res.status(403).send('Twitter profile not found');
       return callback(data);
 
   })
@@ -29,8 +29,6 @@ function getStrategy(){
       //what needs to happen is you create an entry in Twitter with the profileID, tokensecret, and token, along with the userID
       TwitterDB.findOne({userId: req.session.user._id}, function (err, user){
         if(user){
-          console.log(user);
-          console.log('KEK');
           return cb(err, user)
         }
         else{
@@ -54,7 +52,7 @@ function getStrategy(){
   )
 }
 function getTweets(req, res, next){
-  getTwitterProfile(req.session.user._id, function(data){
+  getTwitterProfile(res, req.session.user._id, function(data){
     console.log(data);
     var client = new Twitter({
       consumer_key: twitterConfig.twitterconfig.consumerKey,
