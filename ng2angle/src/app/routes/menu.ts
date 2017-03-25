@@ -44,6 +44,16 @@ const SocialMedia = {
       text: 'twitter',
       link: '/socialmedia/twitter',
       icon: 'icon-social-twitter'
+    },
+    {
+      text: 'google',
+      link: '/socialmedia/google',
+      icon: 'fa-google'
+    },
+    {
+      text: 'facebook',
+      link: '/socialmedia/facebook',
+      icon: 'icon-social-facebook'
     }
   ]
 };
