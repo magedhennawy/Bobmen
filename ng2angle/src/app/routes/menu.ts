@@ -10,43 +10,6 @@ const headingMain = {
     heading: true
 };
 
-/*
-const Pages = {
-  text: 'Pages',
-  link: '/pages',
-  icon: 'icon-doc',
-  submenu: [
-    {
-      text: 'Login',
-      link: '/login'
-    },
-    {
-      text: 'Register',
-      link: '/register'
-    },
-    {
-      text: 'Recover',
-      link: '/recover'
-    },
-    {
-      text: 'Lock',
-      link: '/lock'
-    },
-    {
-      text: '404',
-      link: '/404'
-    },
-    {
-      text: '500',
-      link: '/500'
-    },
-    {
-      text: 'Maintenance',
-      link: '/maintenance'
-    }
-  ]
-};
-*/
 
 const Widgets = {
   text: 'Widgets',
@@ -64,6 +27,10 @@ const Widgets = {
     {
       text: 'Twitter',
       link: '/widgets/twitter'
+    },
+    {
+      text: 'Google',
+      link: '/widgets/google'
     }
   ]
 };
@@ -71,6 +38,5 @@ const Widgets = {
 export const menu = [
     headingMain,
     Home,
-    //Pages,
     Widgets
 ];
