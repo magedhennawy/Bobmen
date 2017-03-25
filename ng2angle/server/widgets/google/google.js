@@ -94,7 +94,7 @@ function getEmails(req, res, next){
       userId: 'me',
       auth: oauth2Client,
       q: 'is:unread',
-      maxResults: 5
+      maxResults: 10
     },
      function(err, response){
        if (err) return res.status(500).send(err);
