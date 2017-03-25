@@ -11,12 +11,14 @@ import { SharedModule } from '../../shared/shared.module';
 import { TodolistComponent } from './todolist/todolist.component';
 import { WeatherComponent } from './weather/weather.component';
 import { TwitterComponent } from './twitter/twitter.component';
+import { GoogleComponent } from './google/google.component';
 
 
 const routes: Routes = [
   { path: 'todolist', component: TodolistComponent },
   { path: 'weather', component: WeatherComponent },
   { path: 'twitter', component: TwitterComponent},
+  { path: 'google', component: GoogleComponent},
 ];
 
 @NgModule({
@@ -34,7 +36,8 @@ const routes: Routes = [
   declarations: [
     TodolistComponent,
     WeatherComponent,
-    TwitterComponent
+    TwitterComponent,
+    GoogleComponent
   ],
   exports: [
     RouterModule
