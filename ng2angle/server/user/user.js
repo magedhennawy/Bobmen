@@ -3,8 +3,8 @@
  */
 
 var User = require('./user.model');
-var Twitter = require('./../widgets/twitter/twitter.model');
-var Google = require('./../widgets/google/google.model');
+
+
 var crypto = require('crypto');
 
 var checkPassword = function(user, password){
@@ -14,38 +14,7 @@ var checkPassword = function(user, password){
   return (user.saltedHash === value);
 };
 
-function googleAuth(req, token, tokenSecret, profile, cb){
-  return cb(err, data);
-}
 
-
-function twitterAuth(req, token, tokenSecret, profile, cb){
-
-    //what needs to happen is you create an entry in Twitter with the profileID, tokensecret, and token, along with the userID
-    Twitter.findOne({userId: req.session.user._id}, function (err, user){
-      if(user){
-        console.log(user);
-        console.log('KEK');
-        return cb(err, user)
-      }
-      else{
-        var twitter = new Twitter({
-          userId: req.session.user._id,
-          twitterId: profile.id,
-          tokenSecret: tokenSecret,
-          token: token
-        });
-        Twitter.create(twitter, function (err, data) {
-          if (err)
-            return cb(err, twitter)
-          else{
-            return cb(err, data)
-          }
-        });
-      }
-
-    });
-}
 
 
 function createUser(req, res ,next){
@@ -122,7 +91,5 @@ module.exports = {
   authMiddleware: authMiddleware,
   signIn: signIn,
   signOut: signOut,
-  twitterAuth: twitterAuth,
-  googleAuth: googleAuth,
   frontEndMiddleware: frontEndMiddleware
 };
