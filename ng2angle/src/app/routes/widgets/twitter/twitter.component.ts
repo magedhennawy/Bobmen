@@ -19,8 +19,7 @@ export class TwitterComponent implements OnInit  {
       document.getElementById("twitterConnect").style.display = "block";
     }).subscribe(
       data => {
-        console.log(data);
-        document.getElementById("twitterConnect").style.display = "hidden";
+        document.getElementById("twitterConnect").style.display = "none";
         this.result = data;
       })
   };
