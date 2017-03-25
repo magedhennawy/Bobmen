@@ -69,10 +69,10 @@ function getStrategy(){
 
 function getGoogleProfile(userId, callback){
   Google.findOne({userId: userId}, function(err, data){
-    if (err) return res.status(500).send('Twitter profile not found')
-    if (data){
-      return callback(data);
-    }
+    if (err) return res.status(500).send('Google profile not found')
+    if(!data) return res.status(403).send('Google profile not found');
+    return callback(data);
+
 
   })
 }
@@ -81,7 +81,6 @@ function getEmails(req, res, next){
 
 
   getGoogleProfile(req.session.user._id, function(data){
-    if(!data) return res.status(403).send('User has no Google Account Linked');
 
     console.log(data);
     oauth2Client.setCredentials({
@@ -129,7 +128,6 @@ function getEmails(req, res, next){
 
 function getEvents(req,res, next){
   getGoogleProfile(req.session.user._id, function(data){
-    if(!data) return res.status(403).send('User has no Google Account Linked');
       console.log(data);
       oauth2Client.setCredentials({
 
