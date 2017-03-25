@@ -1,11 +1,11 @@
 /**
  * Created by Paul on 3/23/2017.
  */
-var TwitterDB = require('./twitter.model.js');
+var TwitterDB = require('./twitter.model');
 
 var twitterConfig = require("../../../config");
 var TwitterStrategy = require('passport-twitter');
-var Twitter = require('./twitter.model');
+var Twitter = require('twitter');
 var user = require('../../user/user');
 
 function getTwitterProfile(userId, callback){
@@ -19,15 +19,15 @@ function getTwitterProfile(userId, callback){
 
 function getStrategy(){
   return new TwitterStrategy({
-      consumerKey: 'HRzzSlnUoIur8wPxJc8W4kdt2',
-      consumerSecret: '9O3tpd5MOI0sMmAFkChdvSoU7hhbej7hzAhQaqKQYtRyV2l7Ty',
+      consumerKey: twitterConfig.twitterconfig.consumerKey,
+      consumerSecret: twitterConfig.twitterconfig.consumerSecret,
       callbackURL: "https://localhost:3000/api/auth/twitter/callback",
       passReqToCallback: true
     },
     function (req, token, tokenSecret, profile, cb){
 
       //what needs to happen is you create an entry in Twitter with the profileID, tokensecret, and token, along with the userID
-      Twitter.findOne({userId: req.session.user._id}, function (err, user){
+      TwitterDB.findOne({userId: req.session.user._id}, function (err, user){
         if(user){
           console.log(user);
           console.log('KEK');
@@ -40,7 +40,7 @@ function getStrategy(){
             tokenSecret: tokenSecret,
             token: token
           });
-          Twitter.create(twitter, function (err, data) {
+          TwitterDB.create(twitter, function (err, data) {
             if (err)
               return cb(err, twitter)
             else{
@@ -55,7 +55,7 @@ function getStrategy(){
 }
 function getTweets(req, res, next){
   getTwitterProfile(req.session.user._id, function(data){
-
+    console.log(data);
     var client = new Twitter({
       consumer_key: twitterConfig.twitterconfig.consumerKey,
       consumer_secret: twitterConfig.twitterconfig.consumerSecret,
@@ -63,10 +63,12 @@ function getTweets(req, res, next){
       access_token_secret: data.tokenSecret
     });
     var params = {screen_name: 'nodejs', count: 10};
-    client.get('statuses/home_timeline', params, function(error, tweets, response){
-      if (!error) {
-        res.json(tweets);
-      }
+    client.get('statuses/home_timeline', params, function(err, tweets, response){
+      console.log(response);
+      if (err) return res.status(500).send(err);
+
+      return res.json(tweets);
+
     })
   })
 }
