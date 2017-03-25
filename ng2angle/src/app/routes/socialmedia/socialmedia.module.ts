@@ -9,10 +9,14 @@ import { HttpModule } from '@angular/http';
 import { SharedModule } from '../../shared/shared.module';
 
 import { TwitterComponent } from './twitter/twitter.component';
+import { GoogleComponent } from './google/google.component';
+import { FacebookComponent } from './facebook/facebook.component';
 
 
 const routes: Routes = [
   { path: 'twitter', component: TwitterComponent},
+  { path: 'google', component: GoogleComponent},
+  { path: 'facebook', component: FacebookComponent},
 ];
 
 @NgModule({
@@ -29,6 +33,8 @@ const routes: Routes = [
   ],
   declarations: [
     TwitterComponent,
+    GoogleComponent,
+    FacebookComponent
   ],
   exports: [
     RouterModule
