@@ -1,25 +1,29 @@
-<div class="panel panel-default" style="width:350px;">
+<div class="panel panel-default twitterPanel"
+     style="width:350px;height:400px;overflow-y:scroll;">
+
+  <button class="mb-sm btn btn-primary" type="button" id="googleConnect" (click)="connectToGoogle()" style="display: none;">Connect To Google</button>
+
   <div>
     <em class="fa fa-refresh pull-right" (click)="getHomeTimeline()"
-                style="padding:8px;"></em><br>
+        style="padding:8px;"></em><br>
   </div>
-  <div class="list-group" height="180" *ngFor="let tweet of result">
-      <div class="list-group-item">
-          <div class="media-box">
-              <div class="pull-left">
-                  <img class="media-box-object img-circle thumb32"
-                  src={{tweet.user.profile_image_url_https}} alt="Image" />
-              </div>
-              <div class="media-box-body clearfix">
-                  <strong class="media-box-heading text-primary">
-                    {{tweet.user.name}}
-                  </strong>
-                  @{{tweet.user.screen_name}}
-                  <p>
-                    <small>{{tweet.text}}</small>
-                  </p>
-              </div>
-          </div>
+  <div class="list-group" *ngFor="let email of result">
+    <div class="list-group-item">
+      <div class="media-box">
+        <div class="pull-left">
+<!--          <img class="media-box-object img-circle thumb32"
+               src={{tweet.user.profile_image_url_https}} alt="Image" />-->
+        </div>
+        <div class="media-box-body clearfix">
+          <strong class="media-box-heading text-primary">
+            {{email.snippet}}
+          </strong>
+<!--          @{{tweet.user.screen_name}}
+          <p>
+            <small>{{tweet.text}}</small>
+          </p>-->
+        </div>
       </div>
+    </div>
   </div>
 </div>
