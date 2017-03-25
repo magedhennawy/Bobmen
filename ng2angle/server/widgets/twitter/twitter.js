@@ -3,8 +3,10 @@
  */
 var TwitterDB = require('./twitter.model.js');
 
-var Twitter = require('twitter');
 var twitterConfig = require("../../../config");
+var TwitterStrategy = require('passport-twitter');
+var Twitter = require('./twitter.model');
+var user = require('../../user/user');
 
 function getTwitterProfile(userId, callback){
   TwitterDB.findOne({userId: userId}, function(err, data){
@@ -14,6 +16,43 @@ function getTwitterProfile(userId, callback){
     }
 
   })
+}
+
+function getStrategy(){
+  return new TwitterStrategy({
+      consumerKey: 'HRzzSlnUoIur8wPxJc8W4kdt2',
+      consumerSecret: '9O3tpd5MOI0sMmAFkChdvSoU7hhbej7hzAhQaqKQYtRyV2l7Ty',
+      callbackURL: "https://localhost:3000/api/auth/twitter/callback",
+      passReqToCallback: true
+    },
+    function (req, token, tokenSecret, profile, cb){
+
+      //what needs to happen is you create an entry in Twitter with the profileID, tokensecret, and token, along with the userID
+      Twitter.findOne({userId: req.session.user._id}, function (err, user){
+        if(user){
+          console.log(user);
+          console.log('KEK');
+          return cb(err, user)
+        }
+        else{
+          var twitter = new Twitter({
+            userId: req.session.user._id,
+            appId: profile.id,
+            tokenSecret: tokenSecret,
+            token: token
+          });
+          Twitter.create(twitter, function (err, data) {
+            if (err)
+              return cb(err, twitter)
+            else{
+              return cb(err, data)
+            }
+          });
+        }
+
+      });
+    }
+  )
 }
 function getTweets(req, res, next){
   getTwitterProfile(req.session.user._id, function(data){
@@ -34,5 +73,6 @@ function getTweets(req, res, next){
 
 
 module.exports = {
-  getTweets: getTweets
+  getTweets: getTweets,
+  getStrategy: getStrategy,
 };
