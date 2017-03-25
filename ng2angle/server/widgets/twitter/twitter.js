@@ -25,7 +25,7 @@ function getStrategy(){
       passReqToCallback: true
     },
     function (req, token, tokenSecret, profile, cb){
-
+      console.log(token);
       //what needs to happen is you create an entry in Twitter with the profileID, tokensecret, and token, along with the userID
       TwitterDB.findOne({userId: req.session.user._id}, function (err, user){
         if(user){
