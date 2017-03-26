@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Http } from '@angular/http';
+import {Observable} from 'rxjs/Rx'
 
 import { TreeNode, TREE_ACTIONS, KEYS, IActionMapping } from 'angular2-tree-component';
 import * as CodeMirror from 'codemirror';
@@ -18,6 +19,7 @@ export class CodeeditorComponent implements OnInit, OnDestroy {
     customTemplateStringOptions = {
         isExpandedField: 'expanded',
     };
+    oldCode: string;
 
     @ViewChild('editor') editor: any;
     instance: any;
@@ -53,28 +55,27 @@ export class CodeeditorComponent implements OnInit, OnDestroy {
 
       this.connection = this.socketService.getMessages().subscribe(message => {
         console.log(message);
-        this.messages.push(message);
-        console.log(this.messages);
+        this.instance.setValue(message);
       });
+
 
 
         this.instance = CodeMirror.fromTextArea(this.editor.nativeElement, this.editorOpts);
         this.updateEditor();
         this.instance.on('change', () => {
             this.code = this.instance.getValue();
+
+
         });
         this.loadTheme(); // load default theme
     }
 
-  sendMessage(){
-    this.socketService.sendMessage(this.message);
-    console.log(this.message)
-    this.message = '';
+  save(){
+    this.socketService.sendMessage(this.instance.getValue());
   }
 
     updateEditor() {
         this.instance.setValue(this.code);
-        console.log(this.code);
     }
 
     loadTheme() {
