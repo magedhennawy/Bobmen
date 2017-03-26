@@ -35,17 +35,17 @@ export class PasswordSaverComponent implements OnInit {
 
     //constructor() { }
 
-    ngOnInit() {
+    ngOnInit() {/*
       this.passwordSaverService.getAllPosts().subscribe(data =>{
         if(data.length > 0){
           this.items = data[0].passwords;
         }else{
           this.items = [];
         }
-      })
+      })*/
     }
 
-    addTodo() {
+    /*addTodo() {
         if (this.todo.title === '') return;
         if (!this.todo.description) this.todo.description = '';
         if (this.editingTodo) {
@@ -71,7 +71,7 @@ export class PasswordSaverComponent implements OnInit {
         this.editingTodo = true;
     };
 
-    removeTodo(index/*, $event*/) {
+    removeTodo(index/!*, $event*!/) {
           this.passwordSaverService.deleteItem(index).subscribe(data =>{
           console.log(data);
         });
@@ -94,6 +94,6 @@ export class PasswordSaverComponent implements OnInit {
         return this.items.filter(item => {
             return !item.complete;
         }).length;
-    };
+    };*/
 
 }
