@@ -74,6 +74,7 @@ export class CodeeditorComponent implements OnInit, OnDestroy {
 
     updateEditor() {
         this.instance.setValue(this.code);
+        console.log(this.code);
     }
 
     loadTheme() {
