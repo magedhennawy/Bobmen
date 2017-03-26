@@ -22,6 +22,7 @@ mongoose.connect(myDB);
 
 const app = express();
 
+
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -68,6 +69,15 @@ var config = {
   key: privateKey,
   cert: certificate
 };
+
+var expressWs = require('express-ws')(app);
+
+app.ws('/', function(ws, req) {
+  ws.on('message', function(msg) {
+    ws.send(msg);
+  });
+  console.log('socket', req.testing);
+});
 
 /**
  * Create HTTP server.

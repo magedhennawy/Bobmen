@@ -6,6 +6,8 @@ import * as CodeMirror from 'codemirror';
 
 import { SettingsService } from '../../../core/settings/settings.service';
 
+import {$WebSocket} from 'angular2-websocket/angular2-websocket'
+
 @Component({
     selector: 'app-codeeditor',
     templateUrl: './codeeditor.component.html',
@@ -45,6 +47,11 @@ export class CodeeditorComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+
+      var ws = new $WebSocket("/");
+      ws.send(event);
+
+
         this.instance = CodeMirror.fromTextArea(this.editor.nativeElement, this.editorOpts);
         this.updateEditor();
         this.instance.on('change', () => {
