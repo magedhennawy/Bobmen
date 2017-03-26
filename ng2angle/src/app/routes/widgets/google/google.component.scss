@@ -1,6 +1,12 @@
-.googlePanel{
-  width: 50%;
+.googlePanel::-webkit-scrollbar {
+    display: none;
 }
+
+.googlePanel{
+  height:430px;
+  overflow-y:scroll;
+}
+
 .dates{
   width:22%
 }

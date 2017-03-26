@@ -13,16 +13,19 @@ export class WeatherComponent implements OnInit {
   weather: Object;
   shown: String;
   iconUrl: String;
+  getWeather = function(){
+    this.WeatherService.getWeather().subscribe(
+      data => {
+        this.weather = data;
+        this.shown = "app";
+        var iconCode = data.weather[0].icon;
+        this.iconUrl = "https://openweathermap.org/img/w/" + iconCode + ".png";
+      })
+  };
 
   constructor(private WeatherService: WeatherService) { }
     ngOnInit(){
-      this.WeatherService.getWeather().subscribe(
-        data => {
-          this.weather = data;
-          this.shown = "app";
-          var iconCode = data.weather[0].icon;
-          this.iconUrl = "https://openweathermap.org/img/w/" + iconCode + ".png";
-        })
+      this.getWeather();
     }
 
     updateWeatherSettings(city, country, metric){

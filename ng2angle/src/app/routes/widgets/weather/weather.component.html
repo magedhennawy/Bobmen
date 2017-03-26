@@ -10,8 +10,8 @@
   </div>
   <div class="col-md-4 hidden-xs pv text-center">
       <div class="text-bold text-sm">
-        <input type="radio" name="metric" #metric /> Metric System<br>
-        <input type="radio" name="metric"/> Imperial System<br>
+        <input type="radio" name="metric" #metric /> celsius<br>
+        <input type="radio" name="metric"/> fahrenheit <br>
       </div>
   </div>
   <div class=" pv">
@@ -45,4 +45,5 @@
   </div>
   <div>
     <em class="fa fa-cog col-md-2 col-sm-3 hidden-xs pv text-center"(click)="shown = 'settings'"></em>
+    <em class="fa fa-refresh col-md-2 col-sm-3 hidden-xs pv text-center" (click)="getWeather()"></em>
   </div>
