@@ -75,14 +75,11 @@ function getGoogleProfile(res, userId, callback){
   })
 }
 
-
 function getThread(res, messages, stuff,  oauth2Client){
 
   if(messages.length == 0){
-    console.log(stuff);
     return res.send(stuff);
   }
-  console.log(messages);
   gmail.users.messages.get({
       userId: 'me',
       auth: oauth2Client,
@@ -103,7 +100,6 @@ function getThread(res, messages, stuff,  oauth2Client){
 function getEmails(req, res, next){
   getGoogleProfile(res, req.session.user._id, function(data){
 
-    console.log(data);
     oauth2Client.setCredentials({
 
       access_token: data.token,
@@ -120,7 +116,6 @@ function getEmails(req, res, next){
     },
      function(err, response){
        if (err) return res.status(500).send(err);
-        console.log(response);
        var stuff = [];
        getThread(res, response.messages, stuff, oauth2Client)
 
@@ -152,7 +147,6 @@ function getEmails(req, res, next){
 
 function getEvents(req,res, next){
   getGoogleProfile(res, req.session.user._id, function(data){
-      console.log(data);
       oauth2Client.setCredentials({
 
         access_token: data.token,
