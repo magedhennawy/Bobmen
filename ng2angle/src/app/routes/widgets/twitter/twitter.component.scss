@@ -1,3 +1,9 @@
 .twitterPanel::-webkit-scrollbar {
     display: none;
 }
+
+.twitterPanel{
+  width:50%;
+  height:400px;
+  overflow-y:scroll;
+}
