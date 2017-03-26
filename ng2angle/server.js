@@ -70,19 +70,40 @@ var config = {
   cert: certificate
 };
 
-var expressWs = require('express-ws')(app);
 
-app.ws('/', function(ws, req) {
-  ws.on('message', function(msg) {
-    ws.send(msg);
+var server = https.createServer(config, app);
+
+
+
+var io = require('socket.io')(server);
+var count = 0;
+io.on('connection', function (socket) {
+  count++;
+
+  console.log("User " + count + " connected")
+
+  socket.on('add-message', function(data){
+    console.log(data);
+    socket.broadcast.emit('message', data)
+  })
+
+  io.emit('news', { msg: 'One more person is online', count: count });
+  socket.emit('private', { msg: 'Welcome you are the ' + count + ' person here' });
+
+  socket.on('private', function (data) {
+    console.log(data);
   });
-  console.log('socket', req.testing);
+
+  socket.on('disconnect', function() {
+    count--;
+    io.emit('news', { msg: 'Someone went home', count: count })
+  })
 });
 
 /**
  * Create HTTP server.
  */
-https.createServer(config, app).listen(3000, function () {
+server.listen(3000, function () {
   console.log('HTTPS on port 3000');
 });
 

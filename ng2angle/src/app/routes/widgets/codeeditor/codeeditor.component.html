@@ -30,6 +30,12 @@
                     <div class="d-cell-inner">
                         <div class="code-editor fh">
                             <div class="code-toolbar btn-toolbar" role="toolbar">
+
+                              <div *ngFor="let message of messages">
+                                {{message.text}}
+                              </div>
+                              <input [(ngModel)]="message"  /><button (click)="sendMessage()">Send</button>
+
                                 <div class="btn-group p pull-right">
                                     <button class="btn btn-default btn-sm" type="button" aria-label="New" (click)="addNode(tree)">New</button>
                                     <button class="btn btn-default btn-sm" type="button" aria-label="Open">Open</button>

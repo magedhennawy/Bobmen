@@ -26,6 +26,7 @@ import { SparklineDirective } from './directives/sparkline/sparkline.directive';
 import { EasypiechartDirective } from './directives/easypiechart/easypiechart.directive';
 import { ColorsService } from './colors/colors.service';
 import { AuthService } from './services/auth.service';
+import { SocketService } from './services/socket.service';
 import { AuthGuard } from './services/authguard.service';
 import { ToDoListService} from './services/todolist.service';
 import { WeatherService } from './services/weather.service';
@@ -65,6 +66,7 @@ import { JqcloudDirective } from './directives/jqcloud/jqcloud.directive';
         ToDoListService,
         AuthGuard,
         WeatherService,
+        SocketService
     ],
     declarations: [
         FlotDirective,

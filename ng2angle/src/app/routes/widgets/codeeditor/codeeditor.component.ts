@@ -5,8 +5,7 @@ import { TreeNode, TREE_ACTIONS, KEYS, IActionMapping } from 'angular2-tree-comp
 import * as CodeMirror from 'codemirror';
 
 import { SettingsService } from '../../../core/settings/settings.service';
-
-import {$WebSocket} from 'angular2-websocket/angular2-websocket'
+import { SocketService } from '../../../shared/services/socket.service';
 
 @Component({
     selector: 'app-codeeditor',
@@ -35,7 +34,11 @@ export class CodeeditorComponent implements OnInit, OnDestroy {
     '// It will be requested to the server and loaded into the editor\n' +
     '// Also try adding a New File from the toolbar\n';
 
-    constructor(public settings: SettingsService, private http: Http) {
+  messages = [];
+  connection;
+  message;
+
+    constructor(public settings: SettingsService, private http: Http, private socketService:SocketService) {
         this.settings.layout.useFullLayout = true;
         this.settings.layout.hiddenFooter = true;
         this.settings.layout.isCollapsed = true;
@@ -48,8 +51,11 @@ export class CodeeditorComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
 
-      var ws = new $WebSocket("/");
-      ws.send(event);
+      this.connection = this.socketService.getMessages().subscribe(message => {
+        console.log(message);
+        this.messages.push(message);
+        console.log(this.messages);
+      });
 
 
         this.instance = CodeMirror.fromTextArea(this.editor.nativeElement, this.editorOpts);
@@ -59,6 +65,12 @@ export class CodeeditorComponent implements OnInit, OnDestroy {
         });
         this.loadTheme(); // load default theme
     }
+
+  sendMessage(){
+    this.socketService.sendMessage(this.message);
+    console.log(this.message)
+    this.message = '';
+  }
 
     updateEditor() {
         this.instance.setValue(this.code);
@@ -130,6 +142,7 @@ export class CodeeditorComponent implements OnInit, OnDestroy {
         this.settings.layout.useFullLayout = false;
         this.settings.layout.hiddenFooter = false;
         this.settings.layout.isCollapsed = false;
+      this.connection.unsubscribe();
 
         // remove link tag
         this.linkForThemes.parentNode.removeChild(this.linkForThemes);
