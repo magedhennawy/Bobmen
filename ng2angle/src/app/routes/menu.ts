@@ -10,7 +10,20 @@ const headingMain = {
     heading: true
 };
 
+const Widgets = {
+  text: 'Widgets',
+  link: '/widgets',
+  icon: 'icon-grid',
+  submenu: [
+    {
+      text: 'Text Editor',
+      link: '/widgets/codeeditor'
+    }
+  ]
+};
+
 export const menu = [
     headingMain,
-    Home
+    Home,
+    Widgets
 ];

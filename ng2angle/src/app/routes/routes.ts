@@ -19,7 +19,6 @@ export const routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full',canActivate: [AuthGuard] },
       { path: 'home', loadChildren: './home/home.module#HomeModule',canActivate: [AuthGuard]},
       { path: 'widgets', loadChildren: './widgets/widgets.module#WidgetsModule',canActivate: [AuthGuard] },
-      { path: 'socialmedia', loadChildren: './socialmedia/socialmedia.module#socialmediaModule',canActivate: [AuthGuard] },
     ]
   },
 

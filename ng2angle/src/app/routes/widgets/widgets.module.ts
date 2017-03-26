@@ -7,13 +7,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { SharedModule } from '../../shared/shared.module';
 
-import { TodolistComponent } from './todolist/todolist.component';
-import { WeatherComponent } from './weather/weather.component';
-import { TwitterComponent } from './twitter/twitter.component';
-import { GoogleComponent } from './google/google.component';
+import { CodeeditorComponent } from './codeeditor/codeeditor.component';
 
-
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'codeeditor', component: CodeeditorComponent },
+];
 
 @NgModule({
   imports: [
@@ -27,9 +25,11 @@ const routes: Routes = [];
     }),
     SelectModule
   ],
-  declarations: [],
+  declarations: [
+    CodeeditorComponent,
+  ],
   exports: [
     RouterModule
-  ]
+  ],
 })
 export class WidgetsModule { }
