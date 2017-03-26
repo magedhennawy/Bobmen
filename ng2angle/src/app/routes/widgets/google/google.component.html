@@ -13,14 +13,14 @@
             <div class="list-group" *ngFor="let email of result; let i=index">
                 <div class="list-group-item">
                     <i class="fa fa-3x fa-envelope pull-left" aria-hidden="true"></i>
-                    <div class="mb-mail-date pull-right dates">{{Dates && Dates[i]}}</div>
+                    <div class="mb-mail-date pull-right dates">{{Dates && Dates[i]}}</div><br>
                     <div class="mb-mail-meta">
                         <div class="pull-left">
                             <div style="font-weight:bold;">{{Subjects && Subjects[i]}}</div>
                             <div class="mb-mail-from">{{Froms && Froms[i]}}</div>
-                        </div>
+                        </div><br>
                         <small>
-                          <div class="mb-mail-preview" [innerHTML]="email.snippet"></div>
+                          <div class="snippet mb-mail-preview" [innerHTML]="email.snippet"></div>
                         </small>
                     </div>
                 </div>
