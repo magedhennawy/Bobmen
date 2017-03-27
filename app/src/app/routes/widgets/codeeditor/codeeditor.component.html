@@ -1,0 +1,35 @@
+<div class="d-table-fixed">
+  <div class="d-cell">
+    <div class="d-table">
+      <div class="d-row">
+        <div class="d-cell-wrapper">
+          <div class="d-cell-inner">
+            <div class="code-editor fh">
+              <div class="code-toolbar btn-toolbar" role="toolbar">
+                <div class="btn-group p pull-right">
+
+                  <button class="btn btn-default btn-sm" type="button" aria-label="New" (click)="join()">Join</button>
+                  <input type="text" [(ngModel)]="secret">
+                </div>
+
+                <div class="btn-group p pull-right">
+                  <select class="form-control" [(ngModel)]="editorOpts.theme" (ngModelChange)="loadTheme(editorOpts.theme)" name="sel2">
+                    <option *ngFor="let theme of editorThemes">{{theme}}</option>
+                  </select>
+                </div>
+
+                <div class="btn-group p pull-left">
+                  <button class="btn btn-default btn-sm" type="button" aria-label="Send" (click)="save()">Send</button>
+
+                </div>
+              </div>
+              <!-- codemirror editor -->
+              <textarea #editor></textarea>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="panel panel-default twitterPanel">
+    <button class="mb-sm btn btn-primary" type="button" id="twitterConnect" (click)="connectToTwitter()" style="display: none;">Connect To Twitter</button>
+
+  <div>
+    <em class="fa fa-refresh pull-right" (click)="getHomeTimeline()"
+                style="padding:8px;"></em><br>
+  </div>
+
+  <div class="list-group" *ngFor="let tweet of result">
+      <div class="list-group-item">
+          <div class="media-box">
+              <div class="pull-left">
+                  <img class="media-box-object img-circle thumb32"
+                  src={{tweet.user.profile_image_url_https}} alt="Image" />
+              </div>
+              <div class="media-box-body clearfix">
+                  <strong class="media-box-heading text-primary">
+                    {{tweet.user.name}}
+                  </strong>
+                  @{{tweet.user.screen_name}}
+                  <p>
+                    <small>{{tweet.text}}</small>
+                  </p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<!--<div *ngFor="let tweet of result">
+  <div class="row">
+    <div class="col-sm-1">
+      <img src="{{tweet.user.profile_image_url}}" alt="">
+    </div>
+    <div class="col-sm-3">Name: {{tweet.user.name}}</div>
+    <div class="col-sm-3">Location: {{tweet.user.location}}</div>
+    <div class="col-sm-3">Time: {{tweet.created_at | twitterDateWithTime}}</div>
+    <div class="col-sm-2">Followers: {{tweet.user.followers_count}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 tweettext">{{tweet.text}}</div>
+  </div>
+</div>-->

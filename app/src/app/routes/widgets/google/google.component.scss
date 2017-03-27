@@ -1,0 +1,16 @@
+.googlePanel::-webkit-scrollbar {
+    display: none;
+}
+
+.googlePanel{
+  height:430px;
+  overflow-y:scroll;
+}
+
+.dates{
+  width:22%
+}
+
+.snippet{
+  margin-top: 20px;
+}
