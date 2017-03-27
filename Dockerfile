@@ -1,7 +1,7 @@
 FROM node
 
-RUN mkdir -p /home/nodejs/ng2angle
-COPY ./ng2angle /home/nodejs/ng2angle
+RUN mkdir -p /home/nodejs/app
+COPY ./ng2angle /home/nodejs/app
 WORKDIR /home/nodejs/ng2angle
 RUN npm install --production
 
