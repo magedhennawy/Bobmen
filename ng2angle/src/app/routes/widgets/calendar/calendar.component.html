@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+
+  <div>
+    <em class="fa fa-refresh pull-right" (click)="getEvents()"
+                style="padding:8px;"></em><br>
+  </div>
+  <div class="content-heading header"> Events </div>
+  <div class="list-group" *ngFor="let event of result.items">
+      <div class="list-group-item">
+          <div class="media-box">
+              <div class="media-box-body clearfix">
+                  <span class="summary text-primary text-uppercase">
+                    <a href={{event.htmlLink}}>{{event.summary}}</a>
+                  </span>
+                  <div class="times">
+                    Starts @:
+                    <span *ngIf="event.start.dateTime">{{event.start.dateTime}}</span>
+                    <span *ngIf="event.start.date">{{event.start.date}}</span>
+                  </div>
+                  <div class="times">
+                    Ends @:
+                    <span *ngIf="event.end.dateTime">{{event.end.dateTime}}</span>
+                    <span *ngIf="event.end.date">{{event.end.date}}</span>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
