@@ -19,10 +19,7 @@ const Widgets = {
       text: 'Text Editor',
       link: '/widgets/codeeditor'
     },
-    {
-      text: 'Calendar',
-      link: '/widgets/calendar'
-    }
+
   ]
 };
 

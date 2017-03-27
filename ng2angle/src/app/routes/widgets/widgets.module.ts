@@ -8,11 +8,9 @@ import { HttpModule } from '@angular/http';
 import { SharedModule } from '../../shared/shared.module';
 
 import { CodeeditorComponent } from './codeeditor/codeeditor.component';
-import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
   { path: 'codeeditor', component: CodeeditorComponent },
-  { path: 'calendar', component: CalendarComponent },
 ];
 
 @NgModule({
@@ -29,7 +27,6 @@ const routes: Routes = [
   ],
   declarations: [
     CodeeditorComponent,
-    CalendarComponent
   ],
   exports: [
     RouterModule

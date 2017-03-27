@@ -13,6 +13,8 @@ import { TodolistComponent } from '../widgets/todolist/todolist.component';
 import { TwitterComponent } from '../widgets/twitter/twitter.component';
 import { GoogleComponent } from '../widgets/google/google.component';
 import { PasswordSaverComponent } from '../widgets/passwordSaver/passwordsaver.component';
+import { CalendarComponent } from '../widgets/calendar/calendar.component';
+
 
 
 const routes: Routes = [
@@ -38,6 +40,7 @@ const routes: Routes = [
       TwitterComponent,
       GoogleComponent,
       PasswordSaverComponent,
+      CalendarComponent,
     ],
     exports: [
         RouterModule,
@@ -47,6 +50,7 @@ const routes: Routes = [
         TwitterComponent,
         GoogleComponent,
         PasswordSaverComponent,
+        CalendarComponent,
     ]
 })
 export class HomeModule { }
