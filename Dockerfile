@@ -3,7 +3,7 @@ FROM node
 RUN mkdir -p /home/nodejs/app
 COPY ./ng2angle /home/nodejs/app
 WORKDIR /home/nodejs/app
-RUN npm install
+RUN npm install --production
 
 EXPOSE 3000
 CMD npm start
