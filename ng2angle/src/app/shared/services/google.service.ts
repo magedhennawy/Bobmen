@@ -17,6 +17,14 @@ export class GoogleService {
       .map((res:Response) => res.json());
   }
 
+  getEvents() {
+    return this.http.get('/api/google/events')
+      .catch(err =>  {
+        return Observable.throw(err.status); // observable needs to be returned or exception raised
+      })
+      .map((res:Response) => res.json());
+  }
+
   /*addItem(item) {
    return this.http.post('/api/todolist',item)
    .map((res:Response) => res.json());
