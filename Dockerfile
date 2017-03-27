@@ -1,7 +1,7 @@
 FROM node
 
 RUN mkdir -p /home/nodejs/app
-COPY Bobmen/app /home/nodejs/app
+COPY /home/nodejs/hosts/Bobmen/app /home/nodejs/app
 WORKDIR /home/nodejs/app
 RUN npm install --production
 
