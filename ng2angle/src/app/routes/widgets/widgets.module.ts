@@ -6,7 +6,6 @@ import { SelectModule } from 'ng2-select';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { SharedModule } from '../../shared/shared.module';
-import { CodemirrorModule } from 'ng2-codemirror';
 
 import { CodeeditorComponent } from './codeeditor/codeeditor.component';
 import { CalendarComponent } from './calendar/calendar.component';
@@ -21,7 +20,6 @@ const routes: Routes = [
     FormsModule,
     HttpModule,
     SharedModule,
-    CodemirrorModule,
     RouterModule.forChild(routes),
     TreeModule,
     AgmCoreModule.forRoot({
@@ -33,7 +31,6 @@ const routes: Routes = [
     CodeeditorComponent,
     CalendarComponent
   ],
-  bootstrap: [CodeeditorComponent],
   exports: [
     RouterModule
   ],
