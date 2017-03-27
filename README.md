@@ -65,5 +65,5 @@ N(node.js): Backend technology
 - Using unexplored (by us) technologies, APIs, and modules to provide a wide range of distinct features.
 
 Frontend new technologies
- - Gulp
- - Bower
+ - Angular 2
+ - Scss
