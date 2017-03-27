@@ -10,7 +10,6 @@ import { UserblockService } from './userblock.service';
 export class UserblockComponent implements OnInit {
     user: any;
     constructor(private userblockService: UserblockService) {
-
         this.user = {
             name: this.userblockService.getCurrentUser(),
             picture: 'assets/img/user/01.jpg'
