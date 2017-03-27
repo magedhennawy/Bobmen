@@ -52,24 +52,6 @@ export class GoogleComponent implements OnInit  {
     }).subscribe(
       data => {
         document.getElementById("googleConnect").style.display = "none";
-
-
-        console.log(data.items);
-
-/*        for(var i=0;i<data.length;i++){
-          var headers = data[i].payload.headers;
-          for(var j=0;j<headers.length;j++){
-            if(headers[j].name == "Date"){
-              this.Dates.push(headers[j].value);
-            }
-            else if(headers[j].name == "Subject"){
-              this.Subjects.push(headers[j].value);
-            }
-            else if(headers[j].name == "From"){
-              this.Froms.push(headers[j].value);
-            }
-          }
-        }*/
       })
   };
 
