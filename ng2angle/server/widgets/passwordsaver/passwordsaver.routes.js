@@ -4,21 +4,15 @@
 
 var express = require('express');
 var router = express.Router();
-var todolist = require('./passwordsaver');
+var passwordsaver = require('./passwordsaver');
 
-/*
-router.post('/todolist',todolist.createUser);
-*/
-/*
-router.use('/', user.authMiddleware);
-*/
-router.get('/todolist', todolist.getToDoList);
+router.get('/passwordsaver', passwordsaver.getPasswordSaver);
 
-router.post('/todolist', todolist.addItem);
+router.post('/passwordsaver', passwordsaver.addItem);
 
-router.patch('/todolist', todolist.editItem);
+router.patch('/passwordsaver', passwordsaver.editItem);
 
-router.delete('/todolist/:index', todolist.deleteItem);
+router.delete('/passwordsaver/:index', passwordsaver.deleteItem);
 
 
 module.exports = router;

@@ -35,6 +35,7 @@ import { VectormapDirective } from './directives/vectormap/vectormap.directive';
 import { NowDirective } from './directives/now/now.directive';
 import { ScrollableDirective } from './directives/scrollable/scrollable.directive';
 import { JqcloudDirective } from './directives/jqcloud/jqcloud.directive';
+import {PasswordSaverService} from "./services/passwordsaver.service";
 
 // https://angular.io/styleguide#!#04-10
 @NgModule({
@@ -64,6 +65,7 @@ import { JqcloudDirective } from './directives/jqcloud/jqcloud.directive';
         ColorsService,
         AuthService,
         ToDoListService,
+        PasswordSaverService,
         AuthGuard,
         WeatherService,
         SocketService

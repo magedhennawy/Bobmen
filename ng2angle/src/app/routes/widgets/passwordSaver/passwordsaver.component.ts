@@ -26,7 +26,7 @@ export class PasswordSaverComponent implements OnInit {
     ];
 
     editingTodo = false;
-    todo: any = {};
+    password: any = {};
     current = {};
 
 
@@ -35,30 +35,30 @@ export class PasswordSaverComponent implements OnInit {
 
     //constructor() { }
 
-    ngOnInit() {/*
+    ngOnInit() {
       this.passwordSaverService.getAllPosts().subscribe(data =>{
         if(data.length > 0){
           this.items = data[0].passwords;
         }else{
           this.items = [];
         }
-      })*/
+      })
     }
 
-    /*addTodo() {
-        if (this.todo.title === '') return;
-        if (!this.todo.description) this.todo.description = '';
+    addTodo() {
+        if (this.password.title === '') return;
+        if (!this.password.description) this.password.description = '';
         if (this.editingTodo) {
-            var current = {index: this.current, item:this.todo};
+            var current = {index: this.current, item:this.password};
             this.passwordSaverService.editItem(current);
-            this.todo = {};
+            this.password = {};
             this.editingTodo = false;
         }
         else {
-            this.passwordSaverService.addItem(this.todo).subscribe(data => {
-                this.items.push({todo: $.extend({}, this.todo), complete: false});
-                this.todo.title = '';
-                this.todo.description = '';
+            this.passwordSaverService.addItem(this.password).subscribe(data => {
+                this.items.push({password: $.extend({}, this.password), complete: false});
+                this.password.title = '';
+                this.password.description = '';
             })
         }
     };
@@ -67,11 +67,11 @@ export class PasswordSaverComponent implements OnInit {
         this.current = index;
         $event.preventDefault();
         $event.stopPropagation();
-        this.todo = this.items[index].todo;
+        this.password = this.items[index].password;
         this.editingTodo = true;
     };
 
-    removeTodo(index/!*, $event*!/) {
+    removeTodo(index/*, $event*/) {
           this.passwordSaverService.deleteItem(index).subscribe(data =>{
           console.log(data);
         });
@@ -94,6 +94,6 @@ export class PasswordSaverComponent implements OnInit {
         return this.items.filter(item => {
             return !item.complete;
         }).length;
-    };*/
+    };
 
 }
