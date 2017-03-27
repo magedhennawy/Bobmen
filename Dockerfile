@@ -1,8 +1,8 @@
 FROM node
 
-RUN mkdir -p /home/nodejs/ng2angle
-COPY ./ng2angle /home/nodejs/ng2angle
-WORKDIR /home/nodejs/ng2angle
+RUN mkdir -p /home/nodejs/app
+COPY ./app /home/nodejs/app
+WORKDIR /home/nodejs/app
 RUN npm install --production
 
 EXPOSE 3000
