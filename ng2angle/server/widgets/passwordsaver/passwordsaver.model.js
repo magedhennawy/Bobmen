@@ -5,7 +5,7 @@ var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
 
-var todolistSchema   = new Schema(
+var passwordSaverSchema   = new Schema(
   {userid: Schema.Types.ObjectId,
     passwords: {type:Array, default:[]}
   },
@@ -13,4 +13,4 @@ var todolistSchema   = new Schema(
 );
 
 
-module.exports = mongoose.model('ToDoList', todolistSchema, "toDoList");
+module.exports = mongoose.model('passwordSaver', passwordSaverSchema, "passwordSaver");

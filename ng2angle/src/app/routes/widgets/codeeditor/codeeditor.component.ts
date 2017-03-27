@@ -19,7 +19,6 @@ export class CodeeditorComponent implements OnInit, OnDestroy {
     customTemplateStringOptions = {
         isExpandedField: 'expanded',
     };
-    oldCode: string;
 
     @ViewChild('editor') editor: any;
     instance: any;
@@ -39,6 +38,7 @@ export class CodeeditorComponent implements OnInit, OnDestroy {
   messages = [];
   connection;
   message;
+  secret: string;
 
     constructor(public settings: SettingsService, private http: Http, private socketService:SocketService) {
         this.settings.layout.useFullLayout = true;
@@ -52,11 +52,14 @@ export class CodeeditorComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+      this.secret = Math.random().toString(36).substring(5);
 
       this.connection = this.socketService.getMessages().subscribe(message => {
         console.log(message);
         this.instance.setValue(message);
       });
+
+      this.join();
 
 
 
@@ -72,6 +75,10 @@ export class CodeeditorComponent implements OnInit, OnDestroy {
 
   save(){
     this.socketService.sendMessage(this.instance.getValue());
+  }
+
+  join(){
+    this.socketService.joinRoom(this.secret);
   }
 
     updateEditor() {

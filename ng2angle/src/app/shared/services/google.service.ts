@@ -17,6 +17,7 @@ export class GoogleService {
       .map((res:Response) => res.json());
   }
 
+
   getEvents(){
     return this.http.get('/api/google/events')
       .catch(err =>  {
@@ -24,18 +25,5 @@ export class GoogleService {
       })
       .map((res:Response) => res.json());
   }
-  /*addItem(item) {
-   return this.http.post('/api/todolist',item)
-   .map((res:Response) => res.json());
-   }
 
-   editItem(item) {
-   return this.http.patch('/api/todolist',item)
-   .map((res:Response) => res.json());
-   }
-
-   deleteItem(index) {
-   return this.http.delete('/api/todolist/'+index)
-   .map((res:Response) => res.json());
-   }*/
 }

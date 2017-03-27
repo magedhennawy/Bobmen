@@ -83,9 +83,20 @@ io.on('connection', function (socket) {
   console.log("User " + count + " connected")
 
   socket.on('add-message', function(data){
+    for (var i in socket.rooms){
+      socket.to(socket.rooms[i]).emit('message', data);
+    }
+  });
+
+  socket.on('join-room', function(data){
     console.log(data);
-    socket.broadcast.emit('message', data)
-  })
+    for (var i in socket.rooms){
+      socket.leave(socket.rooms[i]);
+    }
+    socket.join(data, function(){
+      console.log(socket.rooms);
+    });
+  });
 
   io.emit('news', { msg: 'One more person is online', count: count });
   socket.emit('private', { msg: 'Welcome you are the ' + count + ' person here' });

@@ -21,19 +21,18 @@ function getStrategy(){
   return new TwitterStrategy({
       consumerKey: twitterConfig.twitterconfig.consumerKey,
       consumerSecret: twitterConfig.twitterconfig.consumerSecret,
-      callbackURL: "https://localhost:3000/api/auth/twitter/callback",
+      callbackURL: "/api/auth/twitter/callback",
       passReqToCallback: true
     },
     function (req, token, tokenSecret, profile, cb){
-      console.log(token);
       //what needs to happen is you create an entry in Twitter with the profileID, tokensecret, and token, along with the userID
       TwitterDB.findOne({userId: req.session.user._id}, function (err, user){
-        var twitter = new TwitterDB({
+        var twitter = {
           userId: req.session.user._id,
           appId: profile.id,
           tokenSecret: tokenSecret,
           token: token
-        });
+        };
         if(user){
           TwitterDB.update({_id: user._id},twitter, function (err, data) {
             if (err){
@@ -45,7 +44,6 @@ function getStrategy(){
           });
         }
         else{
-          console.log(twitter);
           TwitterDB.create(twitter, function (err, data) {
             if (err){
 
@@ -65,7 +63,6 @@ function getStrategy(){
 }
 function getTweets(req, res, next){
   getTwitterProfile(res, req.session.user._id, function(data){
-    console.log(data);
     var client = new Twitter({
       consumer_key: twitterConfig.twitterconfig.consumerKey,
       consumer_secret: twitterConfig.twitterconfig.consumerSecret,
