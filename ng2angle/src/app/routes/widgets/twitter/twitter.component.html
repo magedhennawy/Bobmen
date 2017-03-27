@@ -1,0 +1,32 @@
+<div class="panel panel-default twitterPanel">
+  <div>
+    <em class="fa fa-refresh pull-right" (click)="getHomeTimeline()"
+        style="padding:8px;"></em>
+  </div>
+  <button class="mb-sm btn btn-info" type="button" onclick="window.location.href='https://twitter.com'">
+    Go to Twitter
+  </button>
+  <button class="mb-sm btn btn-primary" type="button" id="twitterConnect" (click)="connectToTwitter()" style="display: none;">Connect To Twitter</button>
+
+
+
+  <div class="list-group" *ngFor="let tweet of result">
+      <div class="list-group-item">
+          <div class="media-box">
+              <div class="pull-left">
+                  <img class="media-box-object img-circle thumb32"
+                  src={{tweet.user.profile_image_url_https}} alt="Image" />
+              </div>
+              <div class="media-box-body clearfix">
+                  <strong class="media-box-heading text-primary">
+                    {{tweet.user.name}}
+                  </strong>
+                  @{{tweet.user.screen_name}}
+                  <p>
+                    <small>{{tweet.text}}</small>
+                  </p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

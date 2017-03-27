@@ -1,0 +1,49 @@
+<div *ngIf="shown === 'settings'" class="row row-table contain">
+  <div class="col-md-4 pv">
+    <em class="fa fa-arrow-left pull-right"(click)="shown = 'app'"></em>
+  </div>
+  <div class="col-md-4 pv">
+    <input type="text" placeholder="city (Toronto)" #city />
+  </div>
+  <div class="col-md-4 pv">
+    <input type="text" placeholder="country (ca)" #country /><br>
+  </div>
+  <div class="col-md-4 hidden-xs pv text-center">
+      <div class="text-bold text-sm">
+        <input type="radio" name="metric" #metric /> celsius<br>
+        <input type="radio" name="metric"/> fahrenheit <br>
+      </div>
+  </div>
+  <div class=" pv">
+    <em class="fa fa-floppy-o"
+      (click)="updateWeatherSettings(city.value, country.value, metric.checked)">
+    </em>
+  </div>
+</div>
+
+
+<div *ngIf="shown === 'app'" class="row row-table contain">
+  <div class="col-md-2 col-sm-3 col-xs-6 text-center bg-info pv-xl">
+    <img src={{iconUrl}} class="fa-4x">
+    <div class="text-bold text-sm">{{weather?.name}}</div>
+  </div>
+  <div class="col-md-2 col-sm-3 col-xs-6 pv br">
+      <div class="h1 m0 text-bold">{{weather?.main.temp}}&deg;</div>
+      <div class="text-uppercase">{{weather?.weather[0].description}}</div>
+  </div>
+  <div class="col-md-2 col-sm-3 hidden-xs pv text-center br">
+      <div class="text-bold text-sm">
+        <div> max temperature: {{weather?.main.temp_max}}&deg;</div>
+        <div> min temperature: {{weather?.main.temp_min}}&deg;</div>
+      </div>
+  </div>
+  <div class="col-md-2 col-sm-3 hidden-xs pv text-center">
+      <div class="text-bold text-sm">
+        <div>Humidity: {{weather?.main.humidity}}%</div>
+        <div>Wind Speed: {{weather?.wind.speed}} </div>
+      </div>
+  </div>
+  <div>
+    <em class="fa fa-cog col-md-2 col-sm-3 hidden-xs pv text-center"(click)="shown = 'settings'"></em>
+    <em class="fa fa-refresh col-md-2 col-sm-3 hidden-xs pv text-center" (click)="getWeather()"></em>
+  </div>
