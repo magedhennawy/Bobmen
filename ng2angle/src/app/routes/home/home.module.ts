@@ -37,7 +37,7 @@ const routes: Routes = [
       TodolistComponent,
       TwitterComponent,
       GoogleComponent,
-      PasswordSaverComponent,
+      PasswordSaverComponent
     ],
     exports: [
         RouterModule,
@@ -46,7 +46,7 @@ const routes: Routes = [
         TodolistComponent,
         TwitterComponent,
         GoogleComponent,
-        PasswordSaverComponent,
+        PasswordSaverComponent
     ]
 })
 export class HomeModule { }
