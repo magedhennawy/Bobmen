@@ -16,7 +16,7 @@ var refresh = require('passport-oauth2-refresh')
 var oauth2Client = new OAuth2(
   '663917351280-1idvc9mcpo4lnrr6iqpq89ch4eptfuug.apps.googleusercontent.com',
   'ktuXwRsH_hedKNzvEN0xXaxA',
-  "https://localhost:3000/api/auth/google/callback"
+  "/api/auth/google/callback"
 );
 
 
