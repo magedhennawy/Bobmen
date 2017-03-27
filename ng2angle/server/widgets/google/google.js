@@ -12,6 +12,7 @@ var GoogleStrategy = require('passport-google-oauth20').Strategy
 var calendar = google.calendar('v3');
 var gmail = google.gmail('v1');
 var OAuth2 = google.auth.OAuth2;
+var refresh = require('passport-oauth2-refresh')
 var oauth2Client = new OAuth2(
   '663917351280-1idvc9mcpo4lnrr6iqpq89ch4eptfuug.apps.googleusercontent.com',
   'ktuXwRsH_hedKNzvEN0xXaxA',
@@ -25,15 +26,18 @@ function getStrategy(){
       clientSecret: 'ktuXwRsH_hedKNzvEN0xXaxA',
       callbackURL: "https://localhost:3000/api/auth/google/callback",
       passReqToCallback: true
+
     },
-    function googleAuth(req, token, tokenSecret, profile, cb){
+    function googleAuth(req, token, refreshToken, profile, cb){
+
+    console.log(token,'KEEEEEEEEEEEEEEEEEEEEEK' , refreshToken);
 
       Google.findOne({userId: req.session.user._id}, function (err, user){
         if(user){
           var googleobj = {
             userId: req.session.user._id,
             appId: profile.id,
-            tokenSecret: tokenSecret,
+            tokenSecret: refreshToken,
             token: token
           };
           Google.update({_id: user._id},googleobj, function (err, data) {
@@ -49,7 +53,7 @@ function getStrategy(){
           var googleobj = new Google({
             userId: req.session.user._id,
             appId: profile.id,
-            tokenSecret: tokenSecret,
+            tokenSecret: refreshToken,
             token: token
           });
           Google.create(googleobj, function (err, data) {
@@ -71,7 +75,10 @@ function getGoogleProfile(res, userId, callback){
   Google.findOne({userId: userId}, function(err, data){
     if (err) return res.status(403).send('Google profile not found, db err')
     if(!data) return res.status(403).send('Google profile not found');
-    return callback(data);
+    console.log('kek');
+    console.log(data);
+    return callback(data)
+
   })
 }
 

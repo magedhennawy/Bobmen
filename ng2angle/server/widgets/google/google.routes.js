@@ -22,7 +22,9 @@ var passport = require('passport');
  */
 passport.use(google.getStrategy());
 router.get('/auth/google',
-  passport.authenticate('google', { scope: ['profile', 'https://www.googleapis.com/auth/calendar.readonly','https://mail.google.com/', 'https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/userinfo.email'] }));
+  passport.authenticate('google', { scope: ['profile', 'https://www.googleapis.com/auth/calendar.readonly','https://mail.google.com/', 'https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/userinfo.email'],       accessType: 'offline',
+    approval_prompt: 'force',
+    grant_type: 'authorization_code' }));
 
 router.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login', session: false }),
