@@ -4,7 +4,6 @@ RUN mkdir -p /home/nodejs/app
 COPY ./app /home/nodejs/app
 WORKDIR /home/nodejs/app
 RUN npm install --production
-RUN npm install -g angular-cli
 RUN npm start
 
 EXPOSE 3000
