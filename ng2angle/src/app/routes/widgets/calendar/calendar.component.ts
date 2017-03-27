@@ -30,7 +30,6 @@ export class CalendarComponent implements OnInit  {
             items[i].end.date= new Date(items[i].end.date);
           }
         }
-        console.log(this.result.items)
       })
   };
   ngOnInit(){
