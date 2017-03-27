@@ -25,4 +25,8 @@ export class SocketService {
     });
     return observable;
   }
+
+  joinRoom(roomID){
+    this.socket.emit('join-room', roomID);
+  }
 }
