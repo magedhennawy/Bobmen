@@ -1,0 +1,31 @@
+<div class="panel panel-default googlePanel">
+  <div>
+    <em class="fa fa-refresh pull-right" (click)="getHomeTimeline()"
+        style="padding:8px;"></em>
+  </div>
+  <button class="mb-sm btn btn-info" type="button" onclick="window.location.href='https://inbox.google.com'">
+    Go to Google Inbox
+  </button>
+  <button class="mb-sm btn btn-primary" type="button" id="googleConnect"
+    (click)="connectToGoogle()" style="display: none;">
+    Connect To Google
+  </button>
+    <div class="panel-body">
+        <p class="lead text-center" *ngIf="">No mails here</p>
+            <div class="list-group" *ngFor="let email of result; let i=index">
+                <div class="list-group-item">
+                    <i id="hover" class="fa fa-3x fa-envelope pull-left" aria-hidden="true"  onclick='window.location.href="https://inbox.google.com"'></i>
+                    <div class="mb-mail-date pull-right dates">{{Dates && Dates[i]}}</div><br>
+                    <div class="mb-mail-meta">
+                        <div class="pull-left">
+                            <div style="font-weight:bold;">{{Subjects && Subjects[i]}}</div>
+                            <div class="mb-mail-from">{{Froms && Froms[i]}}</div>
+                        </div><br>
+                        <small>
+                          <div class="snippet mb-mail-preview" [innerHTML]="email.snippet"></div>
+                        </small>
+                    </div>
+                </div>
+            </div>
+  </div>
+</div>

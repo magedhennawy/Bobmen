@@ -1,10 +1,14 @@
 <div class="panel panel-default twitterPanel">
-    <button class="mb-sm btn btn-primary" type="button" id="twitterConnect" (click)="connectToTwitter()" style="display: none;">Connect To Twitter</button>
-
   <div>
     <em class="fa fa-refresh pull-right" (click)="getHomeTimeline()"
-                style="padding:8px;"></em><br>
+        style="padding:8px;"></em>
   </div>
+  <button class="mb-sm btn btn-info" type="button" onclick="window.location.href='https://twitter.com'">
+    Go to Twitter
+  </button>
+  <button class="mb-sm btn btn-primary" type="button" id="twitterConnect" (click)="connectToTwitter()" style="display: none;">Connect To Twitter</button>
+
+
 
   <div class="list-group" *ngFor="let tweet of result">
       <div class="list-group-item">
