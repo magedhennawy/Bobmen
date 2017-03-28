@@ -62,7 +62,7 @@ app.get('*', function(req, res) {
  * Get port from environment and store in Express.
  */
 var fs = require('fs');
-var https = require('http');
+var http = require('http');
 
 
 var server = http.createServer(app);
