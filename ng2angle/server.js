@@ -65,7 +65,7 @@ var fs = require('fs');
 var https = require('http');
 
 
-var server = http.createServer(config, app);
+var server = http.createServer(app);
 
 
 
