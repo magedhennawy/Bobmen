@@ -31,6 +31,7 @@
     "ag-grid": "8.1.0",
     "ag-grid-ng2": "8.0.0",
     "angular2-color-picker": "git://github.com/zefoy/angular2-color-picker.git#npm-package",
+    "angular2-google-maps": "^0.17.0",
     "angular2-text-mask": "5.0.0",
     "angular2-toaster": "^2.0.0",
     "angular2-tree-component": "2.8.2",
