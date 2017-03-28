@@ -62,16 +62,10 @@ app.get('*', function(req, res) {
  * Get port from environment and store in Express.
  */
 var fs = require('fs');
-var https = require('https');
-var privateKey = fs.readFileSync( 'server.key' );
-var certificate = fs.readFileSync( 'server.crt' );
-var config = {
-  key: privateKey,
-  cert: certificate
-};
+var https = require('http');
 
 
-var server = https.createServer(config, app);
+var server = http.createServer(config, app);
 
 
 
