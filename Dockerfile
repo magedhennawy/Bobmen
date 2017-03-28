@@ -8,3 +8,4 @@ RUN npm install angular-cli -g
 
 EXPOSE 3000
 CMD npm start
+CMD npm server.js
