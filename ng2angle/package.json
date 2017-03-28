@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "install": "napa",
-    "start": "ng build --watch && nodemon server.js",
+    "start": "ng build && npm server.js",
     "test": "ng test",
     "lint": "ng lint",
     "modernizr": "modernizr -c modernizr-config.json -d src/modernizr.js",
