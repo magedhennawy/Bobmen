@@ -21,7 +21,7 @@ function getStrategy(){
   return new TwitterStrategy({
       consumerKey: twitterConfig.twitterconfig.consumerKey,
       consumerSecret: twitterConfig.twitterconfig.consumerSecret,
-      callbackURL: "/api/auth/twitter/callback",
+      callbackURL: "https://bobmen.cms-weblab.utsc.utoronto.ca/api/auth/twitter/callback",
       passReqToCallback: true
     },
     function (req, token, tokenSecret, profile, cb){
