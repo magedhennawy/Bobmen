@@ -1,5 +1,3 @@
-options:
-    mongo:
-    redis:
-    mysql:
-        root: pass4root
+ssl:
+    cert: /server.crt
+    key: /server.key
