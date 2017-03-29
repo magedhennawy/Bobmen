@@ -24,7 +24,7 @@ function getStrategy(){
   return new GoogleStrategy({
       clientID: '663917351280-1idvc9mcpo4lnrr6iqpq89ch4eptfuug.apps.googleusercontent.com',
       clientSecret: 'ktuXwRsH_hedKNzvEN0xXaxA',
-      callbackURL: "https://localhost:3000/api/auth/google/callback",
+      callbackURL: "/api/auth/google/callback",
       passReqToCallback: true
 
     },
