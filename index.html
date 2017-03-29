@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset="utf-8">
+    <title>Bobboard Docs</title>
+    <base href="/">
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  </head>
+
+  <body class="container">
+    <div class="page-header"> <h1> Bobboard Documentation </h1> </div>
+    <div id="local setup">
+      <h2>local setup</h2>
+      <div>
+        <code>cd ng2angle</code>: move into the projects main directory
+      </div>
+      <div>
+        <code>npm install</code>: install all the dependencies via NPM
+      </div>
+      <div>
+      <code>npm start</code>: build the front end and start the server - connect @ https://localhost:3000
+      </div>
+    </div>
+    <div id="Users">
+      <h2>Users</h2>
+      <h3> Create a User </h3>
+      <ul>
+        <li> description: create a new user </li>
+        <li> request: <code>PUT /user</code> </li>
+        <ul>
+            <li>content-type: <code>application/json</code></li>
+            <li>body: Object</li>
+            <ul>
+              <li>username: String</li>
+              <li>password: String</li>
+            </ul>
+        </ul>
+        <li>response: 200 | 500 if server error | 409 if user already exists</li>
+        <ul>
+          <li>content-type: <code>application/json</code></li>
+          <li>body: Object</li>
+          <ul>
+            <li>username: the username of new user</li>
+          </ul>
+        </ul>
+      </ul>
+      <!-- <h3> User Get</h3>
+      <ul>
+        <li> description: get an existing user </li>
+        <li> request: <code>GET /user</code> </li>
+        <ul>
+            <li>content-type: <code>application/json</code></li>
+            <li>query: none</li>
+        </ul>
+        <li>response: 200 | 500 if server error | 409 if user already exists</li>
+        <ul>
+          <li>content-type: <code>application/json</code></li>
+          <li>body: Object</li>
+          <ul>
+            <li>username: the username of new user</li>
+          </ul>
+        </ul>
+      </ul> -->
+      <h3> User Signin </h3>
+      <ul>
+        <li> description: authenticate user </li>
+        <li> request: <code>POST /user/signin</code> </li>
+        <ul>
+            <li>content-type: <code>application/json</code></li>
+            <li>body: Object</li>
+            <ul>
+              <li>username: String</li>
+              <li>password: String</li>
+            </ul>
+        </ul>
+        <li>response: 200 | 500 server error | 400 bad request | 401 unauthorized</li>
+        <ul>
+          <li>content-type: <code>application/json</code></li>
+          <li>body: Object</li>
+          <ul>
+            <li>username: the username of user</li>
+          </ul>
+        </ul>
+      </ul>
+      <h3> User Signout </h3>
+      <ul>
+        <li> description: signout existing user </li>
+        <li> request: <code>GET /user/signout</code> </li>
+        <ul>
+            <li>content-type: <code>application/json</code></li>
+            <li>query: none</li>
+        </ul>
+        <li>response: 200 | 500 if server error</li>
+        <ul>
+          <li>content-type: <code>application/json</code></li>
+          <li>body: Object</li>
+          <ul>
+            <li>message: signout message</li>
+          </ul>
+        </ul>
+      </ul>
+    </div>
+    <hr>
+    <div id="Password Saver">
+      <h2>Password Saver</h2>
+      <h3> Get Passwords </h3>
+      <ul>
+        <li> description: get a user's passwords </li>
+        <li> request: <code>GET /passwordsaver</code> </li>
+        <ul>
+            <li>content-type: <code>application/json</code></li>
+            <li>body: none</li>
+        </ul>
+        <li>response: 200 | 500 server error</li>
+        <ul>
+          <li>content-type: <code>application/json</code></li>
+          <li>body: user's passwords</li>
+        </ul>
+      </ul>
+      <h3> Add Password </h3>
+      <ul>
+        <li> description: add a user's password to database </li>
+        <li> request: <code>POST /passwordsaver</code> </li>
+        <ul>
+            <li>content-type: <code>application/json</code></li>
+            <li>body: Object</li>
+            <ul>
+              <li>title: Website</li>
+              <li>description: password</li>
+            </ul>
+        </ul>
+        <li>response: 200 | 500 server error</li>
+        <ul>
+          <li>content-type: <code>application/json</code></li>
+          <li>body: Array of Password Objects</li>
+          <ul>
+            <li>title: password</li>
+            <li>description: description for the password</li>
+          </ul>
+        </ul>
+      </ul>
+      <h3> Edit Password </h3>
+      <ul>
+        <li> description: edit a user's password in the database </li>
+        <li> request: <code>PATCH /passwordsaver</code> </li>
+        <ul>
+            <li>content-type: <code>application/json</code></li>
+            <li>body: Object</li>
+            <ul>
+              <li>index: index of password object</li>
+              <li>title: new Website</li>
+              <li>description: new password</li>
+            </ul>
+        </ul>
+        <li>response: 200 | 500 server error</li>
+        <ul>
+          <li>content-type: <code>application/json</code></li>
+          <li>body: Object</li>
+          <ul>
+            <li>message: successfull operation message</li>
+          </ul>
+        </ul>
+      </ul>
+      <h3> Delete Password </h3>
+      <ul>
+        <li> description: delete a user's password in the database </li>
+        <li> request: <code>DELETE /passwordsaver/:index</code> </li>
+        <ul>
+            <li>content-type: <code>application/json</code></li>
+            <li>query: Object</li>
+            <ul>
+              <li>index: index of password</li>
+            </ul>
+        </ul>
+        <li>response: 200 | 500 server error</li>
+        <ul>
+          <li>content-type: <code>application/json</code></li>
+          <li>body: Object</li>
+          <ul>
+            <li>message: successfull operation message</li>
+          </ul>
+        </ul>
+      </ul>
+    </div>
+    <hr>
+    <div id="Todo List">
+      <h2>Todo List</h2>
+      <h3> Get Tasks </h3>
+      <ul>
+        <li> description: get a user's tasks </li>
+        <li> request: <code>GET /todolist</code> </li>
+        <ul>
+            <li>content-type: <code>application/json</code></li>
+            <li>body: none</li>
+        </ul>
+        <li>response: 200 | 500 server error</li>
+        <ul>
+          <li>content-type: <code>application/json</code></li>
+          <li>body: user's tasks</li>
+        </ul>
+      </ul>
+      <h3> Add Task </h3>
+      <ul>
+        <li> description: add a user's task to database </li>
+        <li> request: <code>POST /todolist</code> </li>
+        <ul>
+            <li>content-type: <code>application/json</code></li>
+            <li>body: Object</li>
+            <ul>
+              <li>title: task</li>
+              <li>description: description for the task</li>
+            </ul>
+        </ul>
+        <li>response: 200 | 500 server error</li>
+        <ul>
+          <li>content-type: <code>application/json</code></li>
+          <li>body: Array of Task Objects</li>
+          <ul>
+            <li>title: Task</li>
+            <li>description: description for the task</li>
+          </ul>
+        </ul>
+      </ul>
+      <h3> Edit Task </h3>
+      <ul>
+        <li> description: edit a user's task in the database </li>
+        <li> request: <code>PATCH /todolist</code> </li>
+        <ul>
+            <li>content-type: <code>application/json</code></li>
+            <li>body: Object</li>
+            <ul>
+              <li>index: index of task object</li>
+              <li>title: new task</li>
+              <li>description: new description for the task</li>
+            </ul>
+        </ul>
+        <li>response: 200 | 500 server error</li>
+        <ul>
+          <li>content-type: <code>application/json</code></li>
+          <li>body: Object</li>
+          <ul>
+            <li>message: successfull operation message</li>
+          </ul>
+        </ul>
+      </ul>
+      <h3> Delete Task </h3>
+      <ul>
+        <li> description: delete a user's task in the database </li>
+        <li> request: <code>DELETE /todolist/:index</code> </li>
+        <ul>
+            <li>content-type: <code>application/json</code></li>
+            <li>query: Object</li>
+            <ul>
+              <li>index: index of task</li>
+            </ul>
+        </ul>
+        <li>response: 200 | 500 server error</li>
+        <ul>
+          <li>content-type: <code>application/json</code></li>
+          <li>body: Object</li>
+          <ul>
+            <li>message: successfull operation message</li>
+          </ul>
+        </ul>
+      </ul>
+    </div>
+    <hr>
+    <div id="Google">
+      <h2>Google</h2>
+      <h3> Get Events </h3>
+      <ul>
+        <li> description: get a user's events from google </li>
+        <li> request: <code>GET /google/events</code> </li>
+        <ul>
+            <li>content-type: <code>application/json</code></li>
+            <li>query: none</li>
+        </ul>
+        <li>response: 200 | 500 if server error</li>
+        <ul>
+          <li>content-type: <code>application/json</code></li>
+          <li>body: Array of Event Objects</li>
+          <ul>
+            <li>event: event information</li>
+          </ul>
+        </ul>
+      </ul>
+      <h3> Get Emails </h3>
+      <ul>
+        <li> description: get a user's emails from google </li>
+        <li> request: <code>GET /google/events</code> </li>
+        <ul>
+            <li>content-type: <code>application/json</code></li>
+            <li>query: none</li>
+        </ul>
+        <li>response: 200 | 500 server error</li>
+        <ul>
+          <li>content-type: <code>application/json</code></li>
+          <li>body: Array of Email Objects</li>
+          <ul>
+            <li>email: email information</li>
+          </ul>
+        </ul>
+      </ul>
+    </div>
+    <hr>
+    <div id="Twitter">
+      <h2>Twitter</h2>
+      <h3> Get Tweets </h3>
+      <ul>
+        <li> description: get a user's tweets </li>
+        <li> request: <code>GET /twitter/tweets</code> </li>
+        <ul>
+            <li>content-type: <code>application/json</code></li>
+            <li>query: none</li>
+        </ul>
+        <li>response: 200 | 500 server error</li>
+        <ul>
+          <li>content-type: <code>application/json</code></li>
+          <li>body: user's tweets</li>
+        </ul>
+      </ul>
+    </div>
+    <hr>
+    <div id="Weather">
+      <h2>Weather</h2>
+      <h3> Get weather </h3>
+      <ul>
+        <li> description: get a user's weather information </li>
+        <li> request: <code>GET /weather/</code> </li>
+        <ul>
+            <li>content-type: <code>application/json</code></li>
+            <li>query: none</li>
+        </ul>
+        <li>response: 200 | 500 server error</li>
+        <ul>
+          <li>content-type: <code>application/json</code></li>
+          <li>body: Weather Object</li>
+        </ul>
+      </ul>
+      <h3> Get Weather Setting </h3>
+      <ul>
+        <li> description: get a user's weather settings </li>
+        <li> request: <code>GET /weather.updateWeatherSettings</code> </li>
+        <ul>
+            <li>content-type: <code>application/json</code></li>
+            <li>query: none</li>
+        </ul>
+        <li>response: 200 | 500 server error</li>
+        <ul>
+          <li>content-type: <code>application/json</code></li>
+          <li>body: user's weather settings</li>
+        </ul>
+      </ul>
+      <h3> Get City List </h3>
+      <ul>
+        <li> description: get a list of cities </li>
+        <li> request: <code>GET /weather/cityList</code> </li>
+        <ul>
+            <li>content-type: <code>application/json</code></li>
+            <li>query: none</li>
+        </ul>
+        <li>response: 200 | 500 server error</li>
+        <ul>
+          <li>content-type: <code>application/json</code></li>
+          <li>body: city list</li>
+        </ul>
+      </ul>
+      <h3> Update User's Weather Settings </h3>
+      <ul>
+        <li> description: get a user's tweets </li>
+        <li> request: <code>POST /weather/settings</code> </li>
+        <ul>
+            <li>content-type: <code>application/json</code></li>
+            <li>body: Object</li>
+            <ul>
+                <li>city: String; city name</li>
+                <li>country: String; country 2 letter abbreviation</li>
+                <li>celsius: Boolean, True if user wants metric units</li>
+            </ul>
+        </ul>
+        <li>response: 200 | 500 server error</li>
+        <ul>
+          <li>content-type: <code>application/json</code></li>
+          <li>body: user's new weather settings</li>
+          <ul>
+              <li>city: String</li>
+              <li>country: String</li>
+              <li>celsius: Boolean</li>
+          </ul>
+        </ul>
+      </ul>
+    </div>
+  </body>
+</html>
