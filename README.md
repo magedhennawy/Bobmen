@@ -1,5 +1,11 @@
 # Bobmen: Bobboard
 
+## YOUTUBE DEMO:
+    ** https://www.youtube.com/watch?v=WqFJcgaZOCU **
+    
+## DOCS FOUND HERE:
+
+
 ## Team Members
 - **Paul Bursu**
 - **Brandon Bowen**
@@ -43,6 +49,8 @@ This app will provide users with the office necessities that would usually requi
         - View recent emails for an e-mail account
     - Reminders:
         - Set future notifications/reminders
+    - Like text editor/ collaboration tool:
+        - Set up text editor using websockets to share work with other people
 
 
 ## Technology we will use
@@ -53,7 +61,7 @@ M(ongoDB): will be used as our database
 
 E(express): Backend technology
 
-A(Angular): Frontend technology
+A(Angular2): Frontend technology
 
 N(node.js): Backend technology
 
@@ -63,6 +71,9 @@ N(node.js): Backend technology
 
 - Implementing all of the widgets and features listed in such a way that it would be relatively easy to add a new widget and feature.
 - Using unexplored (by us) technologies, APIs, and modules to provide a wide range of distinct features.
+- Using websockets to build live text editor/ collaboration tool.
+- Integrating several APIs
+- Finding the right api's for weather widget/calendar widget
 
 Frontend new technologies
  - Angular 2
