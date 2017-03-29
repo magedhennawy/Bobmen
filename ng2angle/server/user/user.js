@@ -72,7 +72,7 @@ function signOut(req,res,next){
 }
 
 function signIn(req,res,next){
-  console.log(req.body);
+
   if (!req.body.username || ! req.body.password) return res.status(400).send("Bad Request");
   User.findOne({username: req.body.username}, function(err, user){
     if (err) return res.status(500).end(err);
